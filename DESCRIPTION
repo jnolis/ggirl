@@ -1,0 +1,16 @@
+Package: ggirl
+Type: Package
+Title: Get art In Real Life (IRL) of your ggplots!
+Version: 0.1.0
+Author: Jacqueline Nolis
+Maintainer: Jacqueline Nolis <jnolis@noreply.users.github.com>
+Description: This is a collection of functions that let you get ggplot2 plots
+    in physical formats. For example ggirl::ggpostcards() allows you to order
+    postcards to be sent to your friends and coworkers.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+  ggplot2 (>= 3.3.3),
+  httr (>= 1.4.2)
+LazyData: true
+RoxygenNote: 7.1.1
