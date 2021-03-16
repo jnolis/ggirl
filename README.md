@@ -6,7 +6,7 @@ The mediums in this package that you can choose from will change over time. Curr
 
 ## ggpostcard
 
-`ggpostcard()` will take your ggplot2 object and will mail a postcard with it to the address of your choice! Great for friends and colleagues (or maybe holiday cards??). You can specify a single address or many addresses to mail to, and you can customize the message on the back. If you send postcards to many people, you can customize the backs for each recipient if you so chose. _Each postcard costs $2.50 to send._
+`ggpostcard()` will take your ggplot2 object and _**will mail a postcard with it to the address of your choice!**_ Great for friends and colleagues (or maybe holiday cards??). You can specify a single address or many addresses to mail to, and you can customize the message on the back. If you send postcards to many people, you can customize the backs for each recipient if you so chose. _Each postcard costs $2.50 to send._
 
 ### How to make a postcard
 
