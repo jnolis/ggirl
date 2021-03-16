@@ -42,6 +42,13 @@ message_1 <- "This plot made me think of you!"
 ggpostcard(plot, contact_email, return_address, messages = message_1, send_addresses = send_address_1)
 ```
 
-This will pop up a web page showing you what the order will look like. If both the front and back look good to you click the button to make the payment and submit the order! Postcards will arrive in 5-7 business days.
+This will pop up a web page showing you what the order will look like. If both the front and back look good to you click the button to make the payment and submit the order.
 
 ![The screen to review the order](man/figures/postcard-order-screen.png)
+
+This will bring you to Stripe to finish the purchase.
+
+![The screen to make the purchase](man/figures/postcard-payment-screen.png)
+
+And you're done! Postcards will arrive in 5-7 business days.
+
