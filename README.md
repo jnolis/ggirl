@@ -1,4 +1,6 @@
-# ggirl - ggplot2 in real life <img src='man/figures/logo.jpg' align="right" height="138.5" style="margin:10px;" />
+# ggirl - make ggplots in real life <img src='man/figures/logo.jpg' align="right" height="138.5" style="margin:10px;" />
+
+_need support? Email [support@ggirl.art](mailto:support@ggirl.art)_
 
 This package is a platform for taking ggplot2 objects and getting real life versions of them. Tired of saving your plots with the plain 'ol `ggsave()` function? Try this package instead!
 
@@ -52,3 +54,6 @@ This will bring you to Stripe to finish the purchase.
 
 And you're done! Postcards will arrive in 5-7 business days.
 
+## Get involved
+
+If you think this package is interesting you can help in multiple ways! Maybe you have an R package that could call one of these functions! Maybe you could come up with a new form of fulfillment, like making plots out of clay! Email info@ggirl.art to discuss it.
