@@ -10,7 +10,6 @@
 #' @param return_address the return address for the postcard (required)
 #' @param messages either a message to use with all of the recipients, or a list of messages of the same length as the list of addresses (one for each address).
 #' @param send_addresses either a result of the "address()" function, or a list of results of the "address()" function.
-#' @param surver_url (development tool, do not adjust)
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
 #' @examples
 #' library(ggplot2)
@@ -37,7 +36,7 @@
 #' # send different messages to multiple recipients
 #' ggpostcard(plot, contact_email, return_address, messages = c("message for sender 1","message for sender 2"), send_addresses = list(send_address_1, send_address_2))
 #' @export
-ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages, send_addresses, server_url = NULL, ...){
+ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages, send_addresses, ...){
   if(inherits(send_addresses,"ggirl_address") && length(messages) == 1){
     # Single recipient
     messages_and_send_addresses <-
@@ -60,9 +59,8 @@ ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages
     version <- "0.0.0"
   }
 
-  if(is.null(server_url)){
-    server_url <- "https://skyetetra.shinyapps.io/ggirl-server"
-  }
+  server_url <- getOption("ggirl_server_url",
+                          "https://skyetetra.shinyapps.io/ggirl-server")
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
@@ -89,7 +87,9 @@ ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages
   response <- httr::POST(paste0(server_url, "/upload"),
                    body = rawConnectionValue(zz),
                    httr::content_type("application/octet-stream"))
-
+  if(response$status_code != 201L){
+    stop(httr::content(response, as="text", encoding="UTF-8"))
+  }
   token <- httr::content(response, as="text", encoding="UTF-8")
   browseURL(paste0(server_url,"/postcard?token=",token))
 }

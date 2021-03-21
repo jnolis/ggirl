@@ -10,7 +10,6 @@ ggpostcard(
   return_address,
   messages,
   send_addresses,
-  server_url = NULL,
   ...
 )
 }
@@ -26,8 +25,6 @@ ggpostcard(
 \item{send_addresses}{either a result of the "address()" function, or a list of results of the "address()" function.}
 
 \item{...}{other options to pass to ggsave when turning the plot into an image for the front of the postcard}
-
-\item{surver_url}{(development tool, do not adjust)}
 }
 \description{
 This function takes a ggplot2 output and will send postcards of it for you!
