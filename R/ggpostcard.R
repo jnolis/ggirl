@@ -62,6 +62,9 @@ ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages
   server_url <- getOption("ggirl_server_url",
                           "https://skyetetra.shinyapps.io/ggirl-server")
 
+  # in the event the server is sleeping, we need to kickstart it before doing the post
+  invisible(httr::GET(server_url))
+
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
   postcard_width_px = 2480
