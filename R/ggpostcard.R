@@ -67,8 +67,8 @@ ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
-  postcard_width_px = 2480
-  postcard_height_px = 1748
+  postcard_width_px = 1875
+  postcard_height_px = 1275
   postcard_dpi = 300
   ggplot2::ggsave(filename = temp_png, plot=plot, width = postcard_width_px/postcard_dpi, height = postcard_height_px/postcard_dpi, dpi = postcard_dpi, ...)
   raw_plot <- readBin(temp_png, "raw", file.info(temp_png)$size)
