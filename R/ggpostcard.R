@@ -70,7 +70,11 @@ ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages
                           "https://skyetetra.shinyapps.io/ggirl-server")
 
   # in the event the server is sleeping, we need to kickstart it before doing the post
-  invisible(httr::GET(server_url))
+  response <- httr::GET(server_url)
+  if(response$status_code != 200L){
+    message("Waiting 10 seconds for ggirl server to come online")
+    Sys.sleep(10)
+  }
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
