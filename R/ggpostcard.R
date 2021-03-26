@@ -37,6 +37,12 @@
 #' ggpostcard(plot, contact_email, return_address, messages = c("message for sender 1","message for sender 2"), send_addresses = list(send_address_1, send_address_2))
 #' @export
 ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages, send_addresses, ...){
+  max_message_length <- 750
+
+  if(any(nchar(messages) > max_message_length)){
+    stop(paste0("Messages can be at most ", max_message_length," characters"))
+  }
+
   if(inherits(send_addresses,"ggirl_address") && length(messages) == 1){
     # Single recipient
     messages_and_send_addresses <-
