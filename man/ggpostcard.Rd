@@ -33,6 +33,7 @@ _No order will be submitted until you explicitly approve it._
 }
 \examples{
 library(ggplot2)
+library(ggirl)
 return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
                           city = "Seattle", state = "WA",
                           postal_code = "11111", country = "US")

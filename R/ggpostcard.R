@@ -13,6 +13,7 @@
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
 #' @examples
 #' library(ggplot2)
+#' library(ggirl)
 #' return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
 #'                           city = "Seattle", state = "WA",
 #'                           postal_code = "11111", country = "US")
