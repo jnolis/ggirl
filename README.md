@@ -55,7 +55,7 @@ And you're done! Postcards will arrive in 5-7 business days.
 
 #### Sunrise/sunset plot
 
-You can use `ggirl::example_postcard_sunrise(...)` to make a postcard of sunrise and sunset locations for a city. You'll need the latitude, longitude, and time zone for the location, and it takes a minute or so to query the [sunrise/sunset api](https://sunrise-sunset.org/api):
+You can use `ggirl::ggpostcard_example_sunrise(...)` to make a postcard of sunrise and sunset locations for a city. You'll need the latitude, longitude, and time zone for the location, and it takes a minute or so to query the [sunrise/sunset api](https://sunrise-sunset.org/api):
 
 <img src="man/figures/sunrise-example.png" alt-text="Example sunrise/sunset postcard" width="60%">
 
