@@ -7,9 +7,9 @@
 #'
 #' @param plot the plot to put on the front of the postcard
 #' @param contact_email email address to send order updates
-#' @param return_address the return address for the postcard (required)
 #' @param messages either a message to use with all of the recipients, or a list of messages of the same length as the list of addresses (one for each address).
 #' @param send_addresses either a result of the "address()" function, or a list of results of the "address()" function.
+#' @param return_address (optional) the return address for the postcard. **Must be a US address.**
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
 #' @examples
 #' library(ggplot2)
@@ -29,19 +29,26 @@
 #' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()
 #'
 #' # send to one recipient
-#' ggpostcard(plot, contact_email, return_address, messages = "An example postcard", send_addresses = send_address_1)
+#' ggpostcard(plot, contact_email,  messages = "An example postcard", send_addresses = send_address_1)
 #'
 #' # send the same message to multiple recipients
-#' ggpostcard(plot, contact_email, return_address, messages = "An example postcard", send_addresses = list(send_address_1, send_address_2))
+#' ggpostcard(plot, contact_email, messages = "An example postcard", send_addresses = list(send_address_1, send_address_2))
 #'
-#' # send different messages to multiple recipients
-#' ggpostcard(plot, contact_email, return_address, messages = c("message for sender 1","message for sender 2"), send_addresses = list(send_address_1, send_address_2))
+#' # send different messages to multiple recipients, and a return address
+#' ggpostcard(plot, contact_email,
+#'            messages = c("message for sender 1","message for sender 2"),
+#'            send_addresses = list(send_address_1, send_address_2),
+#'            return_address = return_address)
 #' @export
-ggpostcard <- function(plot=last_plot(), contact_email, return_address, messages, send_addresses, ...){
+ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses, return_address = NULL, ...){
   max_message_length <- 750
 
   if(any(nchar(messages) > max_message_length)){
     stop(paste0("Messages can be at most ", max_message_length," characters"))
+  }
+
+  if(!is.null(return_address) && return_address$country != "US"){
+    stop("If return address is included then it must be in the United States")
   }
 
   if(inherits(send_addresses,"ggirl_address") && length(messages) == 1){
