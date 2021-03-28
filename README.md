@@ -26,13 +26,10 @@ library(ggplot2)
 plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y)) + geom_line() + geom_point()
 ```
 
-Now let's ship it! Specify your email address (for order updates), send and return addresses, and the message to put on the back:
+Now let's ship it! Specify your email address (for order updates), address(s) to mail to, and the message to put on the back:
 
 ```r
-return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
-                          city = "Seattle", state = "WA",
-                          postal_code = "11111", country = "US")
-
+library(ggirl)
 contact_email <- "fakeemailforreal@gmail.com"
 
 send_address_1 <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
@@ -41,10 +38,10 @@ send_address_1 <- address(name = "Fake Personname", address_line_1 = "250 North 
 
 message_1 <- "This plot made me think of you!"
 
-ggpostcard(plot, contact_email, return_address, messages = message_1, send_addresses = send_address_1)
+ggpostcard(plot, contact_email, messages = message_1, send_addresses = send_address_1)
 ```
 
-This will pop up a web page showing you what the order will look like. If both the front and back look good to you click the button to make the payment and submit the order.
+This will pop up a web page showing you what the order will look like. If both the front picture and back info look good to you click the button to make the payment and submit the order.
 
 ![The screen to review the order](man/figures/postcard-order-screen.png)
 
@@ -53,6 +50,33 @@ This will bring you to Stripe to finish the purchase.
 ![The screen to make the purchase](man/figures/postcard-payment-screen.png)
 
 And you're done! Postcards will arrive in 5-7 business days.
+
+### Examples for if you can't think of a cool postcard plot 
+
+#### Sunrise/sunset plot
+
+You can use `ggirl::example_postcard_sunrise(...)` to make a postcard of sunrise and sunset locations for a city. You'll need the latitude, longitude, and time zone for the location, and it takes a minute or so to query the [sunrise/sunset api](https://sunrise-sunset.org/api):
+
+<img src="man/figures/sunrise-example.png" alt-text="Example sunrise/sunset postcard" width="60%">
+
+```r
+library(ggirl)
+location_lat <- 47.6062
+location_long <- -122.3321
+location_tz <- "America/Los_Angeles"
+location_name <- "Seattle, WA"
+return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
+                          city = "Seattle", state = "WA",
+                          postal_code = "11111", country = "US")
+contact_email <- "fakeemailforreal@gmail.com"
+send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
+                          city = "Boston", state = "MA",
+                          postal_code = "22222", country = "US")
+messages <- "Look at this cool plot I found!"
+ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name,
+                           contact_email = contact_email, return_address = return_address,
+                           send_addresses = send_addresses, messages = messages)
+```
 
 ## Get involved
 
