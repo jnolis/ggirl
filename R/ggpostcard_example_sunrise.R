@@ -175,6 +175,13 @@ make_sunrise_plot <- function(sunrise_info, location_name, tz){
 #'   send_addresses = send_addresses, messages = messages)
 #' @export
 ggpostcard_example_sunrise <- function(location_lat, location_long, location_tz, location_name, ...){
+  required_packages <- c("lubridate", "memoise", "progress", "tidyr")
+  packages_is_installed <- sapply(required_packages, function(x) requireNamespace(x, quietly = TRUE))
+  if (any(!packages_is_installed)) {
+    stop(paste0("This example requires you to install these packages: ",
+                paste0(required_packages[!packages_is_installed], collapse = ", ")),
+         call. = FALSE)
+  }
   sunrise_info <- get_sunrise_sunsets(location_lat, location_long, location_tz)
   plot <- make_sunrise_plot(sunrise_info, location_name, location_tz)
   ggpostcard(plot = plot, ...)

@@ -26,7 +26,7 @@ library(ggplot2)
 plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y)) + geom_line() + geom_point()
 ```
 
-Now let's ship it! Specify your email address (for order updates), address(s) to mail to, and the message to put on the back:
+Now let's ship it! Specify your email address (for order updates), address to mail to, and the message to put on the back:
 
 ```r
 library(ggirl)
@@ -40,6 +40,8 @@ message_1 <- "This plot made me think of you!"
 
 ggpostcard(plot, contact_email, messages = message_1, send_addresses = send_address_1)
 ```
+
+_(You can include multiple recipients too and customize the return address--check out the function help for more details.)_
 
 This will pop up a web page showing you what the order will look like. If both the front picture and back info look good to you click the button to make the payment and submit the order.
 
