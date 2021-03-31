@@ -1,7 +1,7 @@
 Package: ggirl
 Type: Package
 Title: ggplot art in real life
-Version: 0.5.5
+Version: 0.5.6
 Author: Jacqueline Nolis
 Maintainer: Jacqueline Nolis <support@ggirl.art>
 Description: This is a collection of functions that let you get ggplot2 plots
@@ -15,7 +15,10 @@ Imports:
 LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
-    memoise (>= 2.0.0),
-    lubridate (>= 1.7.9),
-    progress (>= 1.2.2),
-    tidyr (>= 1.1.0)
+  memoise (>= 2.0.0),
+  lubridate (>= 1.7.9),
+  progress (>= 1.2.2),
+  tidyr (>= 1.1.0),
+  contouR (>= 0.0.0.9000)
+Remotes:
+  Ijeamakaanyene/contouR

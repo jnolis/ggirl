@@ -29,9 +29,9 @@ and sunset is over the course of the year.
 }
 \details{
 To get the longitude and latitude for your location, you can click a place in Google maps.
-To get the time zone, you can use the Wikipedia list of time zone codes: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+To get the time zone, you can use the \href{https://en.wikipedia.org/wiki/List_of_tz_database_time_zones}{Wikipedia list of time zone codes}
 
-This function uses an external API (https://sunrise-sunset.org/api). While the package has some built-in caching,
+This function uses an external API \href{https://sunrise-sunset.org/api}{https://sunrise-sunset.org/api}. While the package has some built-in caching,
 _if you call the function with too many locations in a short period of time your IP will be temporarily blocked_.
 }
 \examples{
