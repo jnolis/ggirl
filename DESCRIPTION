@@ -21,4 +21,4 @@ Suggests:
   tidyr (>= 1.1.0),
   contouR (>= 0.0.0.9000)
 Remotes:
-  Ijeamakaanyene/contouR
+  Ijeamakaanyene/contouR@main
