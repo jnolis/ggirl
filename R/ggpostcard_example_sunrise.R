@@ -18,7 +18,10 @@ get_year_dates <- function(year = NULL){
   seq.Date(start_date,end_date,by="day")
 }
 
-mem_get_sunrise_sunset_single_day <- memoise::memoise(get_sunrise_sunset_single_day)
+if(requireNamespace("memoise", quietly = TRUE)){
+  mem_get_sunrise_sunset_single_day <- memoise::memoise(get_sunrise_sunset_single_day)
+}
+
 
 get_sunrise_sunsets <- function(lat, long, tz, dates = NULL, progress = TRUE){
   message("Querying api: https://sunrise-sunset.org/api")
@@ -30,9 +33,14 @@ get_sunrise_sunsets <- function(lat, long, tz, dates = NULL, progress = TRUE){
                                      total = length(dates))
   }
 
+  if(exists("mem_get_sunrise_sunset_single_day")){
+    get_fun <- mem_get_sunrise_sunset_single_day
+  } else {
+    get_fun <- get_sunrise_sunset_single_day
+  }
   datetimes <- lapply(dates, function(d){
     pb$tick()
-    mem_get_sunrise_sunset_single_day(list(lat = lat, long = long), d, tz)
+    get_fun(list(lat = lat, long = long), d, tz)
   })
   result <- do.call(rbind,lapply(datetimes,as.data.frame))
   result$date <- dates
