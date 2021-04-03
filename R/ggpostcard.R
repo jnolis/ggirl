@@ -7,6 +7,70 @@ postcard_content_width_px <- postcard_width_px - 2*ceiling(postcard_width_px*saf
 postcard_content_height_px <- postcard_height_px - 2*ceiling(postcard_width_px*safe_margin)
 postcard_dpi <- 300
 
+#' Save a postcard image to a file
+ggpostcard_save <- function(filename, plot, ...){
+  ggplot2::ggsave(filename = filename, plot=plot, width = postcard_content_width_px/postcard_dpi, height = postcard_content_height_px/postcard_dpi, dpi = postcard_dpi, ...)
+}
+
+#' Preview the front of your postcard
+#'
+#' This function takes a ggplot2 output and gives a preview of how the image will look.
+#' While it's totally fine to just call ggirl::ggpostcard to preview, this allows you to preview before having
+#' the addresses and other details set.
+#'
+#' The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not
+#'
+#'
+#' @param plot the plot to put on the front of the postcard
+#' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
+#' @examples
+#' library(ggplot2)
+#' library(ggirl)
+#' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()
+#' ggpostcard_preview(plot)
+#' @export
+ggpostcard_preview <- function(plot, ...){
+  temp_dir <- tempfile()
+  dir.create(temp_dir)
+  temp_plot_file <- file.path(temp_dir, "plot.png")
+  temp_css_file <- file.path(temp_dir, "site.css")
+  temp_html_file <- file.path(temp_dir, "index.html")
+  add <- function(css,line) paste0(css,line,"\n")
+  mg <- ceiling(postcard_width_px*(safe_margin-cut_margin))
+  css <- "body {margin: 0;}\n\n.postcard {\n"
+  css <- add(css, "box-shadow: 10px 5px 5px #404040;")
+  css <- add(css, "border-color: #404040;")
+  css <- add(css, "border-width: 2px;")
+  css <- add(css, "border-style: solid;")
+  css <- add(css, "max-width: 90%;")
+  css <- add(css, "max-height: 90%;")
+  css <- add(css, paste0("margin: ",mg,"px ",mg,"px ",mg,"px ",mg,"px;"))
+  css <- add(css, "}")
+
+  html <- '
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ggpostcard preview</title>
+    <link rel="stylesheet" href="site.css">
+  </head>
+  <body>
+    <img src="plot.png" class = "postcard">
+  </body>
+</html>
+  '
+
+  ggpostcard_save(filename = temp_plot_file, plot = plot, ...)
+  writeLines(css, temp_css_file)
+  writeLines(html, temp_html_file)
+  viewer <- getOption("viewer")
+  if (!is.null(viewer))
+    viewer(temp_html_file)
+  else
+    utils::browseURL(temp_html_file)
+}
+
 #' Order postcards of your ggplot!
 #'
 #' This function takes a ggplot2 output and will send postcards of it for you!
@@ -94,7 +158,7 @@ ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
-  ggplot2::ggsave(filename = temp_png, plot=plot, width = postcard_content_width_px/postcard_dpi, height = postcard_content_height_px/postcard_dpi, dpi = postcard_dpi, ...)
+  ggpostcard_save(filename = temp_png, plot=plot, ...)
   raw_plot <- readBin(temp_png, "raw", file.info(temp_png)$size)
 
   data <- list(

@@ -1,11 +1,11 @@
 Package: ggirl
 Type: Package
 Title: ggplot art in real life
-Version: 0.5.6
+Version: 0.5.7
 Author: Jacqueline Nolis
 Maintainer: Jacqueline Nolis <support@ggirl.art>
 Description: This is a collection of functions that let you get ggplot2 plots
-    in physical formats. For example ggirl::ggpostcards() allows you to order
+    in physical formats. For example ggirl::ggpostcard() allows you to order
     postcards to be sent to your friends and coworkers.
 License: MIT + file LICENSE
 Encoding: UTF-8
