@@ -80,6 +80,26 @@ ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_na
                            send_addresses = send_addresses, messages = messages)
 ```
 
+#### ContouR plot
+
+You can use `ggirl::ggpostcard_example_contouR(...)` to make a postcard of the generative art of [@Ijeamakaanyene](https://github.com/Ijeamakaanyene). Besides the addresses and information you'll need to send the ggpostcard, you can also optionally include specific colors for the background and lines.
+
+<img src="man/figures/contouR-example.png" alt-text="Example contouR postcard" width="60%">
+
+```r
+library(ggirl)
+return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
+                          city = "Seattle", state = "WA",
+                          postal_code = "11111", country = "US")
+contact_email <- "fakeemailforreal@gmail.com"
+send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
+                          city = "Boston", state = "MA",
+                          postal_code = "22222", country = "US")
+messages <- "Look at this cool plot I found!"
+ggpostcard_example_contouR(contact_email = contact_email, return_address = return_address,
+  send_addresses = send_addresses, messages = messages)
+```
+
 ## Get involved
 
 If you think this package is interesting you can help in multiple ways! Maybe you have an R package that could call one of these functions! Maybe you could come up with a new form of fulfillment, like making plots out of clay! Email info@ggirl.art to discuss it.
