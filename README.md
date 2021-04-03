@@ -89,7 +89,7 @@ If you think this package is interesting you can help in multiple ways! Maybe yo
 Thanks to:
 
 * [@nolistic](https://github.com/nolistic) and [@robinsones](https://github.com/robinsones) for helping design the product.
-* The beta tester: [@cxinya](https://github.com/cxinya), [@delabj](https://github.com/delabj), [@thisisnic](https://github.com/thisisnic), [@TheCoachEdwards](https://github.com/TheCoachEdwards), [@ryantimpe](https://github.com/ryantimpe), [@robinsones](https://github.com/robinsones), [@mcsiple](https://github.com/mcsiple), [@cathblatter](https://github.com/cathblatter).
+* The beta testers: [@cxinya](https://github.com/cxinya), [@delabj](https://github.com/delabj), [@thisisnic](https://github.com/thisisnic), [@TheCoachEdwards](https://github.com/TheCoachEdwards), [@ryantimpe](https://github.com/ryantimpe), [@robinsones](https://github.com/robinsones), [@mcsiple](https://github.com/mcsiple), [@cathblatter](https://github.com/cathblatter).
 * [@Ijeamakaanyene](https://github.com/Ijeamakaanyene) for the use of the contouR example.
 * [sunrise-sunset.org](https://sunrise-sunset.org/) for the API powering the sunrise example.
 * [@ColinFay](https://github.com/ColinFay) for the package ({brochure})[https://github.com/ColinFay/brochure] which powers the Shiny server doing the back-end work.
