@@ -83,3 +83,12 @@ ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_na
 ## Get involved
 
 If you think this package is interesting you can help in multiple ways! Maybe you have an R package that could call one of these functions! Maybe you could come up with a new form of fulfillment, like making plots out of clay! Email info@ggirl.art to discuss it.
+
+## Acknowledgments
+
+Thanks to:
+
+* @nolistic and @robinsones for helping design the product.
+* The beta tester: @cxinya, @delabj, @thisisnic, @TheCoachEdwards, @ryantimpe, @robinsones, @mcsiple, @cathblatter.
+* @Ijeamakaanyene for the use of the contouR example.
+* [sunrise-sunset.org](https://sunrise-sunset.org/) for the API powering the sunrise example.
