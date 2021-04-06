@@ -1,6 +1,6 @@
 
-cut_margin <- 0.02
-safe_margin <- 0.03
+cut_margin <- 0.02941176
+safe_margin <- 0.04411765
 postcard_width_px <- 1875
 postcard_height_px <- 1275
 postcard_content_width_px <- postcard_width_px - 2*ceiling(postcard_width_px*safe_margin)
