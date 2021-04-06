@@ -178,6 +178,9 @@ ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses
   response <- httr::POST(paste0(server_url, "/upload"),
                    body = rawConnectionValue(zz),
                    httr::content_type("application/octet-stream"))
+  if(response$status_code == 403L){
+    stop("Cannot connect to ggirl server. Go to https://ggirl.art/status to see latest status updates")
+  }
   if(response$status_code != 201L){
     stop(httr::content(response, as="text", encoding="UTF-8"))
   }
