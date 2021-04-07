@@ -20,8 +20,9 @@ ggpostcard_example_sunrise(
 \item{location_tz}{a tz time zone string of the style taken by R functions like as.POSIXct}
 
 \item{location_name}{string for the name to show for the location (ex: "Seattle, WA")}
-
-\item{...}{other options to pass to ggpostcard()}
+}
+\value{
+a ggplot2 plot to pass to ggpostcard
 }
 \description{
 This example makes a postcard with a pretty ggplot that gives you when sunrise
@@ -48,7 +49,8 @@ send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North 
                           city = "Boston", state = "MA",
                           postal_code = "22222", country = "US")
 messages <- "Look at this cool plot I found!"
-ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name,
+plot <- ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name)
+ggpostcard(plot = plot,
   contact_email = contact_email, return_address = return_address,
   send_addresses = send_addresses, messages = messages)
 }
