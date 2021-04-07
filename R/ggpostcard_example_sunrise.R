@@ -166,6 +166,7 @@ make_sunrise_plot <- function(sunrise_info, location_name, tz){
 #' @param location_tz a tz time zone string of the style taken by R functions like as.POSIXct
 #' @param location_name string for the name to show for the location (ex: "Seattle, WA")
 #' @return a ggplot2 plot to pass to ggpostcard
+#' @family ggpostcard_examples
 #' @examples
 #' library(ggirl)
 #' location_lat <- 47.6062

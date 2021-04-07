@@ -6,6 +6,7 @@
 #' @param background_col (optional) the background color of the plot
 #' @param line_col (optional) the color of the lines in the plot
 #' @return a ggplot2 plot to pass to ggpostcard
+#' @family ggpostcard_examples
 #' @examples
 #' library(ggirl)
 #' return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",

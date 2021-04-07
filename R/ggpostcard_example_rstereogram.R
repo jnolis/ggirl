@@ -17,6 +17,7 @@
 #' @param colors (optional) vector of visually distinct colors to make the image
 #' @param alpha_only (optional) If the alpha channel of the png file
 #' @return a ggplot2 plot to pass to ggpostcard
+#' @family ggpostcard_examples
 #' @examples
 #' library(ggirl)
 #' return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",

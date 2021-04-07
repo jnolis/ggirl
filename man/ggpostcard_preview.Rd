@@ -25,3 +25,6 @@ library(ggirl)
 plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()
 ggpostcard_preview(plot)
 }
+\seealso{
+\code{\link[=ggpostcard]{ggpostcard()}} to order the postcards
+}

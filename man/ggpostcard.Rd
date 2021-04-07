@@ -22,14 +22,14 @@ ggpostcard(
 
 \item{send_addresses}{either a result of the "address()" function, or a list of results of the "address()" function.}
 
-\item{return_address}{(optional) the return address for the postcard. **Must be a US address.**}
+\item{return_address}{(optional) the return address for the postcard. \strong{Must be a US address.}}
 
 \item{...}{other options to pass to ggsave when turning the plot into an image for the front of the postcard}
 }
 \description{
 This function takes a ggplot2 output and will send postcards of it for you!
 Running this function will bring you to a webpage to confirm the order and submit it.
-_No order will be submitted until you explicitly approve it._
+\emph{No order will be submitted until you explicitly approve it.}
 }
 \examples{
 library(ggplot2)
@@ -59,4 +59,9 @@ ggpostcard(plot, contact_email,
            messages = c("message for sender 1","message for sender 2"),
            send_addresses = list(send_address_1, send_address_2),
            return_address = return_address)
+}
+\seealso{
+\code{\link[=ggpostcard_preview]{ggpostcard_preview()}} to preview a plot on a postcard within R
+
+\code{\link[=address]{address()}} to format an address for ggirl
 }
