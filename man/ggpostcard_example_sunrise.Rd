@@ -5,10 +5,10 @@
 \title{An example postcard with the sunrise and sunset times for a location}
 \usage{
 ggpostcard_example_sunrise(
-  location_lat,
-  location_long,
-  location_tz,
-  location_name,
+  location_lat = NULL,
+  location_long = NULL,
+  location_tz = NULL,
+  location_name = NULL,
   ...
 )
 }
@@ -33,7 +33,9 @@ To get the longitude and latitude for your location, you can click a place in Go
 To get the time zone, you can use the \href{https://en.wikipedia.org/wiki/List_of_tz_database_time_zones}{Wikipedia list of time zone codes}
 
 This function uses an external API \href{https://sunrise-sunset.org/api}{https://sunrise-sunset.org/api}. While the package has some built-in caching,
-_if you call the function with too many locations in a short period of time your IP will be temporarily blocked_.
+\emph{if you call the function with too many locations in a short period of time your IP will be temporarily blocked}.
+
+If all of the inputs are NULL, the function defaults to using Seattle, Washington.
 }
 \examples{
 library(ggirl)
@@ -54,3 +56,9 @@ ggpostcard(plot = plot,
   contact_email = contact_email, return_address = return_address,
   send_addresses = send_addresses, messages = messages)
 }
+\seealso{
+Other ggpostcard_examples: 
+\code{\link{ggpostcard_example_contouR}()},
+\code{\link{ggpostcard_example_rstereogram}()}
+}
+\concept{ggpostcard_examples}

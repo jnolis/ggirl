@@ -23,6 +23,7 @@ ggpostcard_save <- function(filename, plot, ...){
 #'
 #' @param plot the plot to put on the front of the postcard
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
+#' @seealso [ggpostcard()] to order the postcards
 #' @examples
 #' library(ggplot2)
 #' library(ggirl)
@@ -84,6 +85,8 @@ ggpostcard_preview <- function(plot, ...){
 #' @param send_addresses either a result of the "address()" function, or a list of results of the "address()" function.
 #' @param return_address (optional) the return address for the postcard. **Must be a US address.**
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
+#' @seealso [ggpostcard_preview()] to preview a plot on a postcard within R
+#' @seealso [address()] to format an address for ggirl
 #' @examples
 #' library(ggplot2)
 #' library(ggirl)

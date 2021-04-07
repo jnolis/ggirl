@@ -27,7 +27,7 @@ address(
 
 \item{postal_code}{The postal code (ZIP code in the US)}
 
-\item{country}{The 2-character [ISO-1366 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) for the country. Non-US shipping is experimental!}
+\item{country}{The 2-character \href{https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes}{ISO-1366 code} for the country. Non-US shipping is experimental!}
 }
 \description{
 This function takes string inputs and converts them into an address object that can be used to send irl art (or as a return address).

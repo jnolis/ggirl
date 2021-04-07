@@ -31,3 +31,9 @@ plot <- ggpostcard_example_contouR()
 ggpostcard(plot = plot, contact_email = contact_email, return_address = return_address,
   send_addresses = send_addresses, messages = messages)
 }
+\seealso{
+Other ggpostcard_examples: 
+\code{\link{ggpostcard_example_rstereogram}()},
+\code{\link{ggpostcard_example_sunrise}()}
+}
+\concept{ggpostcard_examples}

@@ -26,14 +26,16 @@ This example makes a postcard where if you cross your eyes you see a secret imag
 It uses the package {rstereogram} by Ryan Timpe.
 }
 \details{
-*Depending on the size of the image preview the image may be distorted.*
+\emph{Depending on the size of the image preview the image may be distorted.}
 Try zooming in and out of the picture on your monitor to see the effect.
 
 The default image is the R logo, however you can pass your own PNG file.
 Suggestions for your own file:
-* It should have the aspect ratio 5.875in x 3.875in
-* It should be grayscale
-* It should be a small file (height around 500 pixels)
+\itemize{
+\item It should have the aspect ratio 5.875in x 3.875in
+\item It should be grayscale
+\item It should be a small file (height around 500 pixels)
+}
 }
 \examples{
 library(ggirl)
@@ -49,3 +51,9 @@ plot <- ggpostcard_example_rstereogram()
 ggpostcard(plot = plot, contact_email = contact_email, return_address = return_address,
   send_addresses = send_addresses, messages = messages)
 }
+\seealso{
+Other ggpostcard_examples: 
+\code{\link{ggpostcard_example_contouR}()},
+\code{\link{ggpostcard_example_sunrise}()}
+}
+\concept{ggpostcard_examples}

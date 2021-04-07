@@ -1,7 +1,7 @@
 Package: ggirl
 Type: Package
 Title: ggplot art in real life
-Version: 0.5.7
+Version: 0.5.8
 Author: Jacqueline Nolis
 Maintainer: Jacqueline Nolis <support@ggirl.art>
 Description: This is a collection of functions that let you get ggplot2 plots
@@ -14,6 +14,7 @@ Imports:
   httr (>= 1.4.2)
 LazyData: true
 RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
 Suggests: 
   memoise (>= 2.0.0),
   lubridate (>= 1.7.9),
