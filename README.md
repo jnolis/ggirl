@@ -60,49 +60,66 @@ And you're done! Postcards will arrive in 5-7 business days.
 
 ### Examples for if you can't think of a cool postcard plot 
 
+Included in ggirl::ggpostcard functionality are a few plots that are ready for you to try!
+
 #### Sunrise/sunset plot
 
-You can use `ggirl::ggpostcard_example_sunrise(...)` to make a postcard of sunrise and sunset locations for a city. You'll need the latitude, longitude, and time zone for the location, and it takes a minute or so to query the [sunrise/sunset api](https://sunrise-sunset.org/api):
+You can use `ggirl::ggpostcard_example_sunrise()` to make a postcard of sunrise and sunset locations for a city. It defaults to Seattle, WA, but you can use any location (check the documentation for requirements). It takes a minute or so to query the [sunrise/sunset api](https://sunrise-sunset.org/api):
 
 <img src="man/figures/sunrise-example.png" alt-text="Example sunrise/sunset postcard" width="60%">
 
 ```r
 library(ggirl)
-location_lat <- 47.6062
-location_long <- -122.3321
-location_tz <- "America/Los_Angeles"
-location_name <- "Seattle, WA"
-return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
-                          city = "Seattle", state = "WA",
-                          postal_code = "11111", country = "US")
 contact_email <- "fakeemailforreal@gmail.com"
 send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
                           city = "Boston", state = "MA",
                           postal_code = "22222", country = "US")
 messages <- "Look at this cool plot I found!"
-ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name,
-                           contact_email = contact_email, return_address = return_address,
-                           send_addresses = send_addresses, messages = messages)
+
+plot <- ggpostcard_example_sunrise()
+ggpostcard(plot = plot,
+           contact_email = contact_email,
+           send_addresses = send_addresses, messages = messages)
 ```
 
 #### ContouR plot
 
-You can use `ggirl::ggpostcard_example_contouR(...)` to make a postcard of the generative art of [@Ijeamakaanyene](https://github.com/Ijeamakaanyene). Besides the addresses and information you'll need to send the ggpostcard, you can also optionally include specific colors for the background and lines.
+You can use `ggirl::ggpostcard_example_contouR()` to make a postcard of the generative art of [@Ijeamakaanyene](https://github.com/Ijeamakaanyene). Check the help function on how to change the colors of the plot.
 
 <img src="man/figures/contouR-example.png" alt-text="Example contouR postcard" width="60%">
 
 ```r
 library(ggirl)
-return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
-                          city = "Seattle", state = "WA",
-                          postal_code = "11111", country = "US")
 contact_email <- "fakeemailforreal@gmail.com"
 send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
                           city = "Boston", state = "MA",
                           postal_code = "22222", country = "US")
 messages <- "Look at this cool plot I found!"
-ggpostcard_example_contouR(contact_email = contact_email, return_address = return_address,
-  send_addresses = send_addresses, messages = messages)
+
+plot <- ggpostcard_example_contouR()
+ggpostcard(plot = plot,
+           contact_email = contact_email,
+           send_addresses = send_addresses, messages = messages)
+```
+
+#### rstereogram plot
+
+You can use `ggirl::ggpostcard_example_rstereogram()` to make a postcard of a stereogram of an image using the rstereogram package by [@ryantimpe](https://github.com/ryantimpe). It defaults to the R logo but you can pass it any PNG file. Check the documentation for best practices around that, and if you're having trouble seeing the image you may need to zoom in on your monitor.
+
+<img src="man/figures/rstereogram-example.png" alt-text="Example rstereogram postcard" width="60%">
+
+```r
+library(ggirl)
+contact_email <- "fakeemailforreal@gmail.com"
+send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North Ave",
+                          city = "Boston", state = "MA",
+                          postal_code = "22222", country = "US")
+messages <- "Look at this cool plot I found!"
+
+plot <- ggpostcard_example_rstereogram()
+ggpostcard(plot = plot,
+           contact_email = contact_email,
+           send_addresses = send_addresses, messages = messages)
 ```
 
 ## Get involved
@@ -117,4 +134,6 @@ Thanks to:
 * The beta testers: [@cxinya](https://github.com/cxinya), [@delabj](https://github.com/delabj), [@thisisnic](https://github.com/thisisnic), [@TheCoachEdwards](https://github.com/TheCoachEdwards), [@ryantimpe](https://github.com/ryantimpe), [@robinsones](https://github.com/robinsones), [@mcsiple](https://github.com/mcsiple), and [@cathblatter](https://github.com/cathblatter).
 * [@ColinFay](https://github.com/ColinFay) for the package [{brochure}](https://github.com/ColinFay/brochure) which powers the Shiny server doing the back-end work.
 * [@Ijeamakaanyene](https://github.com/Ijeamakaanyene) for the use of the contouR example.
+* [@ryantimpe](https://github.com/ryantimpe) for the use of the rstereogram example.
 * [sunrise-sunset.org](https://sunrise-sunset.org/) for the API powering the sunrise example.
+* [The R foundation](https://www.r-project.org/logo/) for the R logo in the ggpostcard_example_rstereogram().

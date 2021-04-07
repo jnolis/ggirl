@@ -159,11 +159,13 @@ make_sunrise_plot <- function(sunrise_info, location_name, tz){
 #' This function uses an external API \href{https://sunrise-sunset.org/api}{https://sunrise-sunset.org/api}. While the package has some built-in caching,
 #' _if you call the function with too many locations in a short period of time your IP will be temporarily blocked_.
 #'
+#' If all of the inputs are NULL, the function defaults to using Seattle, Washington.
+#'
 #' @param location_lat the latitude of the location
 #' @param location_long the longitude of the location
 #' @param location_tz a tz time zone string of the style taken by R functions like as.POSIXct
 #' @param location_name string for the name to show for the location (ex: "Seattle, WA")
-#' @param ... other options to pass to ggpostcard()
+#' @return a ggplot2 plot to pass to ggpostcard
 #' @examples
 #' library(ggirl)
 #' location_lat <- 47.6062
@@ -178,11 +180,12 @@ make_sunrise_plot <- function(sunrise_info, location_name, tz){
 #'                           city = "Boston", state = "MA",
 #'                           postal_code = "22222", country = "US")
 #' messages <- "Look at this cool plot I found!"
-#' ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name,
+#' plot <- ggpostcard_example_sunrise(location_lat, location_long, location_tz, location_name)
+#' ggpostcard(plot = plot,
 #'   contact_email = contact_email, return_address = return_address,
 #'   send_addresses = send_addresses, messages = messages)
 #' @export
-ggpostcard_example_sunrise <- function(location_lat, location_long, location_tz, location_name, ...){
+ggpostcard_example_sunrise <- function(location_lat = NULL, location_long = NULL, location_tz = NULL, location_name = NULL, ...){
   required_packages <- c("lubridate", "memoise", "progress", "tidyr")
   packages_is_installed <- sapply(required_packages, function(x) requireNamespace(x, quietly = TRUE))
   if (any(!packages_is_installed)) {
@@ -190,7 +193,17 @@ ggpostcard_example_sunrise <- function(location_lat, location_long, location_tz,
                 paste0(required_packages[!packages_is_installed], collapse = ", ")),
          call. = FALSE)
   }
+
+  if(is.null(location_lat) && is.null(location_long) && is.null(location_tz) && is.null(location_name)){
+    location_lat <- 47.6062
+    location_long <- -122.3321
+    location_tz <- "America/Los_Angeles"
+    location_name <- "Seattle, WA"
+  } else if(is.null(location_lat) || is.null(location_long) || is.null(location_tz) || is.null(location_name)){
+    stop("Either all of location_lat, location_long, location_tz, and location_name must be NULL or none must be")
+  }
+
   sunrise_info <- get_sunrise_sunsets(location_lat, location_long, location_tz)
   plot <- make_sunrise_plot(sunrise_info, location_name, location_tz)
-  ggpostcard(plot = plot, ...)
+  plot
 }

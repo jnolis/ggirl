@@ -4,14 +4,15 @@
 \alias{ggpostcard_example_contouR}
 \title{An example postcard with art from the contouR package}
 \usage{
-ggpostcard_example_contouR(background_col = NULL, line_col = NULL, ...)
+ggpostcard_example_contouR(background_col = NULL, line_col = NULL)
 }
 \arguments{
 \item{background_col}{(optional) the background color of the plot}
 
 \item{line_col}{(optional) the color of the lines in the plot}
-
-\item{...}{other options to pass to ggpostcard()}
+}
+\value{
+a ggplot2 plot to pass to ggpostcard
 }
 \description{
 This example makes a postcard with a beautiful graphic using the \href{https://github.com/Ijeamakaanyene/contouR}{contouR package} by Ijeamaka Anyene.
@@ -26,6 +27,7 @@ send_addresses <- address(name = "Fake Personname", address_line_1 = "250 North 
                           city = "Boston", state = "MA",
                           postal_code = "22222", country = "US")
 messages <- "Look at this cool plot I found!"
-ggpostcard_example_contouR(contact_email = contact_email, return_address = return_address,
+plot <- ggpostcard_example_contouR()
+ggpostcard(plot = plot, contact_email = contact_email, return_address = return_address,
   send_addresses = send_addresses, messages = messages)
 }

@@ -19,6 +19,9 @@ Suggests:
   lubridate (>= 1.7.9),
   progress (>= 1.2.2),
   tidyr (>= 1.1.0),
-  contouR (>= 0.0.0.9000)
+  contouR (>= 0.0.0.9000),
+  rstereogram (>= 0.1.2),
+  png (>= 0.1-7)
 Remotes:
   Ijeamakaanyene/contouR@main
+  ryantimpe/rstereogram

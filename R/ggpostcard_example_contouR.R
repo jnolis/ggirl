@@ -5,7 +5,7 @@
 #'
 #' @param background_col (optional) the background color of the plot
 #' @param line_col (optional) the color of the lines in the plot
-#' @param ... other options to pass to ggpostcard()
+#' @return a ggplot2 plot to pass to ggpostcard
 #' @examples
 #' library(ggirl)
 #' return_address <- address(name = "Jacqueline Nolis", address_line_1 = "111 North St",
@@ -16,10 +16,11 @@
 #'                           city = "Boston", state = "MA",
 #'                           postal_code = "22222", country = "US")
 #' messages <- "Look at this cool plot I found!"
-#' ggpostcard_example_contouR(contact_email = contact_email, return_address = return_address,
+#' plot <- ggpostcard_example_contouR()
+#' ggpostcard(plot = plot, contact_email = contact_email, return_address = return_address,
 #'   send_addresses = send_addresses, messages = messages)
 #' @export
-ggpostcard_example_contouR <- function(background_col = NULL, line_col = NULL, ...){
+ggpostcard_example_contouR <- function(background_col = NULL, line_col = NULL){
   if(!requireNamespace("contouR", quietly = TRUE)) {
     stop("This example requires you to install the contouR package: remotes::install_github(Ijeamakaanyene/contouR)",
          call. = FALSE)
@@ -40,5 +41,5 @@ ggpostcard_example_contouR <- function(background_col = NULL, line_col = NULL, .
     ggplot2::xlim(1, 30) +
     ggplot2::ylim(1, 30/postcard_content_width_px*postcard_content_height_px)
 
-  ggpostcard(plot = plot, ...)
+  plot
 }
