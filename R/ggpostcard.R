@@ -117,7 +117,7 @@ ggpostcard_preview <- function(plot, ...){
 #'            return_address = return_address)
 #' @export
 ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses, return_address = NULL, ...){
-  max_message_length <- 750
+  max_message_length <- 700
 
   if(any(nchar(messages) > max_message_length)){
     stop(paste0("Messages can be at most ", max_message_length," characters"))
