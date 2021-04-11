@@ -82,7 +82,7 @@ ggpostcard_preview <- function(plot, ...){
 #' @param plot the plot to put on the front of the postcard
 #' @param contact_email email address to send order updates
 #' @param messages either a message to use with all of the recipients, or a list of messages of the same length as the list of addresses (one for each address).
-#' @param send_addresses either a result of the "address()" function, or a list of results of the "address()" function.
+#' @param send_addresses either a result of the "address()" function, or a list of results of the "address()" function. Currently only US addresses are allowed, but international postcards are coming soon!
 #' @param return_address (optional) the return address for the postcard. **Must be a US address.**
 #' @param ... other options to pass to ggsave when turning the plot into an image for the front of the postcard
 #' @seealso [ggpostcard_preview()] to preview a plot on a postcard within R
@@ -142,6 +142,12 @@ ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses
                                             messages, send_addresses, SIMPLIFY = FALSE)
       messages_and_send_addresses <- unname(messages_and_send_addresses)
     }
+  }
+
+  # just for launch! International coming soon
+  address_countries <- sapply(messages_and_send_addresses, function(x) (x$send_address$country))
+  if(any(address_countries != "US")){
+    stop("Address list contains non-US countries (but international postcards are coming soon!)")
   }
 
   version <- packageDescription("ggirl", fields = "Version")

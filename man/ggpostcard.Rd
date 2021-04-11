@@ -20,7 +20,7 @@ ggpostcard(
 
 \item{messages}{either a message to use with all of the recipients, or a list of messages of the same length as the list of addresses (one for each address).}
 
-\item{send_addresses}{either a result of the "address()" function, or a list of results of the "address()" function.}
+\item{send_addresses}{either a result of the "address()" function, or a list of results of the "address()" function. Currently only US addresses are allowed, but international postcards are coming soon!}
 
 \item{return_address}{(optional) the return address for the postcard. \strong{Must be a US address.}}
 
