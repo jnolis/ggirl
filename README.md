@@ -58,7 +58,7 @@ This will bring you to Stripe to finish the purchase.
 
 ![The screen to make the purchase](man/figures/postcard-payment-screen.png)
 
-And you're done! Postcards will arrive in 5-7 business days.
+And you're done! Postcards will arrive in around 1-2 weeks.
 
 ### Examples for if you can't think of a cool postcard plot 
 
