@@ -138,4 +138,4 @@ Thanks to:
 * [@Ijeamakaanyene](https://github.com/Ijeamakaanyene) for the use of the contouR example.
 * [@ryantimpe](https://github.com/ryantimpe) for the use of the rstereogram example.
 * [sunrise-sunset.org](https://sunrise-sunset.org/) for the API powering the sunrise example.
-* [The R foundation](https://www.r-project.org/logo/) for the R logo in the ggpostcard_example_rstereogram().
+* [The R Foundation](https://www.r-project.org/logo/) for the R logo in the ggpostcard_example_rstereogram().
