@@ -117,10 +117,17 @@ ggpostcard_preview <- function(plot, ...){
 #'            return_address = return_address)
 #' @export
 ggpostcard <- function(plot=last_plot(), contact_email, messages, send_addresses, return_address = NULL, ...){
-  max_message_length <- 600
+  max_num_lines <- 21
+  max_num_char_cols <- 28
 
-  if(any(nchar(messages) > max_message_length)){
-    stop(paste0("Messages can be at most ", max_message_length," characters"))
+  message_fits <- function(message){
+    lines <- strsplit(message,"\r?\n")[[1]]
+    num_lines <- sum(pmax(ceiling(nchar(lines)/max_num_char_cols),1))
+    num_lines <= max_num_lines
+  }
+
+  if(any(!sapply(messages, message_fits))){
+    stop("Message won't fit. Try making your message shorter or removing newlines")
   }
 
   if(!is.null(return_address) && return_address$country != "US"){
