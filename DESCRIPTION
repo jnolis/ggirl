@@ -1,7 +1,7 @@
 Package: ggirl
 Type: Package
 Title: ggplot art in real life
-Version: 1.0.1
+Version: 2.0.0
 Author: Jacqueline Nolis
 Maintainer: Jacqueline Nolis <support@ggirl.art>
 Description: This is a collection of functions that let you get ggplot2 plots
@@ -26,3 +26,5 @@ Suggests:
 Remotes:
   Ijeamakaanyene/contouR@main,
   ryantimpe/rstereogram
+Depends: 
+    R (>= 2.10)
