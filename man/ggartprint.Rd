@@ -27,7 +27,7 @@ ggartprint(
 
 \item{address}{the physical address to mail the print(s) to. Use the \code{\link[=address]{address()}} function to format it.}
 
-\item{...}{other options to pass to ragg::agg_png when turning the plot into an image for the front of the postcard.}
+\item{...}{other options to pass to \code{ragg::agg_png()} when turning the plot into an image for the front of the postcard.}
 }
 \description{
 This function takes a ggplot2 output and will order an art print to hang on a wall!

@@ -19,6 +19,98 @@ ggartprint_sizes <- function(){
   info
 }
 
+
+#' Preview your art print
+#'
+#' This function takes a ggplot2 output and gives a preview of how the plot will look as an art print.
+#' While it's totally fine to just call ggirl::ggartprint to preview, this allows you to preview locally.
+#'
+#' The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not
+#'
+#'
+#' @param plot the plot to use as an art print
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param orientation should the plot be landscape or portrait?
+#' @param ... other options to pass to `ragg::agg_png()` when turning the plot into an image for the front of the postcard.
+#' @seealso [ggartprint()] to order the art print
+#' @examples
+#' library(ggplot2)
+#' library(ggirl)
+#' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
+#' ggartprint_preview(plot, size="24x36", orientation = "landscape")
+#' @export
+ggartprint_preview <- function(plot, size, orientation, ...){
+  temp_dir <- tempfile()
+  dir.create(temp_dir)
+  temp_plot_file <- file.path(temp_dir, "plot.png")
+  temp_css_file <- file.path(temp_dir, "site.css")
+  temp_html_file <- file.path(temp_dir, "index.html")
+  mg <- ceiling(postcard_width_px*(safe_margin-cut_margin))
+  css <- "body {margin: 0;}
+.frame {
+    background-color: #303030;
+    box-shadow: 0 10px 7px -5px rgba(0, 0, 0, 0.3);
+    padding: 1rem!important;
+    margin: 1rem!important;
+    display: inline-block;
+}
+
+.box-shadow {
+    position: relative;
+    text-align: center;
+}
+
+.box-shadow::after {
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5) inset;
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.box-shadow img {
+    max-width: 100%;
+    width: auto;
+    max-height: 90vh;
+}
+
+.artprint {
+    max-width: 100%;
+    height: auto;
+}"
+
+  html <- '
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ggartprint preview</title>
+    <link rel="stylesheet" href="site.css">
+  </head>
+  <body>
+  <div class="frame">
+  <div class="box-shadow">
+    <img src="plot.png" class = "artprint">
+  </div>
+  </div>
+  </body>
+</html>
+  '
+
+  ggartprint_save(filename = temp_plot_file, plot = plot, size = size, orientation = orientation, ...)
+  writeLines(css, temp_css_file)
+  writeLines(html, temp_html_file)
+  viewer <- getOption("viewer")
+  if (!is.null(viewer))
+    viewer(temp_html_file)
+  else
+    utils::browseURL(temp_html_file)
+}
+
 ggartprint_save <- function(filename, plot, size, orientation = c("landscape","portrait"), ...){
   orientation <- match.arg(orientation)
   size_info <- as.list(artprint_size_info[artprint_size_info$size == size,])
@@ -74,7 +166,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #' @param contact_email email address to send order updates.
 #' @param quantity the number of prints to order (defaults to 1).
 #' @param address the physical address to mail the print(s) to. Use the [address()] function to format it.
-#' @param ... other options to pass to ragg::agg_png when turning the plot into an image for the front of the postcard.
+#' @param ... other options to pass to `ragg::agg_png()` when turning the plot into an image for the front of the postcard.
 #' @seealso [address()] to format an address for ggirl
 #' @examples
 #' library(ggplot2)

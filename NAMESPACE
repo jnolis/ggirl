@@ -3,6 +3,7 @@
 export(address)
 export(ggartprint)
 export(ggartprint_example_map)
+export(ggartprint_preview)
 export(ggartprint_sizes)
 export(ggpostcard)
 export(ggpostcard_example_contouR)
