@@ -1,4 +1,3 @@
-
 artprint_dpi <- 300
 
 artprint_size_info <-
@@ -9,6 +8,10 @@ artprint_size_info <-
     height_in = c(14L, 20L, 24L, 36L, 12L, 16L, 20L)
     )
 
+#' get a table of sizes of prints available.
+#'
+#' Prices include shipping. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @export
 ggartprint_sizes <- function(){
   info <- artprint_size_info[,c("size","price_cents","width_in","height_in")]
   info_names <- c("size","price","width_inches","height_inches")
@@ -26,17 +29,67 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
   if(orientation == "landscape"){
     width <- size_info$height_in
     height <- size_info$width_in
-  } else {
+  } else if(orientation == "portrait") {
     width <- size_info$width_in
     height <- size_info$height_in
+  } else {
+    stop("invalid orientation")
   }
 
-  ggplot2::ggsave(filename = filename, plot=plot, device = "png",
-                    width = width, height = height, dpi = artprint_dpi, ...)
+  old_dev <- grDevices::dev.cur()
+  ragg::agg_png(
+    filename,
+    width = width,
+    height = height,
+    units = "in",
+    res = artprint_dpi,
+    ...)
+
+  on.exit(utils::capture.output({
+    grDevices::dev.off()
+    if (old_dev > 1) grDevices::dev.set(old_dev)
+  }))
+
+  grid::grid.draw(plot)
+
 }
 
-ggartprint <- function(plot, size, orientation, contact_email, address, quantity=1, ...){
 
+#' Order art prints of your ggplot!
+#'
+#' This function takes a ggplot2 output and will order an art print to hang on a wall!
+#' Running this function will bring you to a webpage to confirm the order and submit it.
+#' _No order will be submitted until you explicitly approve it._
+#'
+#' You can choose from a number of options for the size of the print (and either rectangular or square).
+#' All of the sizes are high resolution, so things like text size in the R/RStudio plot may not reflect what
+#' it would look like as a poster. It's recommended you run the function a few times and adjust plot attributes
+#' until you get it the way you like it.
+#'
+#' Prints take up to 3-4 weeks to deliver.
+#'
+#' @param plot the plot to use as an art print.
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param orientation should the plot be landscape or portrait?
+#' @param contact_email email address to send order updates.
+#' @param quantity the number of prints to order (defaults to 1).
+#' @param address the physical address to mail the print(s) to. Use the [address()] function to format it.
+#' @param ... other options to pass to ragg::agg_png when turning the plot into an image for the front of the postcard.
+#' @seealso [address()] to format an address for ggirl
+#' @examples
+#' library(ggplot2)
+#' library(ggirl)
+#' delivery_address <- address(name = "Fake person", address_line_1 = "101 12th st",
+#'   address_line_2 = "Apt 17", city = "Seattle", state = "WA",
+#'   postal_code = "98102", country = "US")
+#' contact_email = "fakeemail275@gmail.com"
+#' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
+#' ggartprint(plot, size="24x36", orientation = "landscape", quantity = 1,
+#'            contact_email = contact_email, address = delivery_address)
+#' @export
+ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portrait"),  quantity=1, contact_email, address, ...){
+
+  orientation <- match.arg(orientation)
   if(any(address$country != "US")){
     stop("Art prints only available for US addresses through package. Email support@ggirl.art to price a custom order.")
   }

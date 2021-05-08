@@ -11,18 +11,21 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
   ggplot2 (>= 3.3.3),
-  httr (>= 1.4.2)
+  httr (>= 1.4.2),
+  memoise (>= 2.0.0),
+  ragg (>= 1.1.2)
 LazyData: true
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
-  memoise (>= 2.0.0),
   lubridate (>= 1.7.9),
   progress (>= 1.2.2),
   tidyr (>= 1.1.0),
   contouR (>= 0.0.0.9000),
   rstereogram (>= 0.1.2),
-  png (>= 0.1-7)
+  png (>= 0.1-7),
+  osmdata (>= 0.1.5),
+  sf (>= 0.9-8)
 Remotes:
   Ijeamakaanyene/contouR@main,
   ryantimpe/rstereogram

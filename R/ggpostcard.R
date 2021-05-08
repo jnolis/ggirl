@@ -7,7 +7,6 @@ postcard_content_width_px <- postcard_width_px - 2*ceiling(postcard_width_px*saf
 postcard_content_height_px <- postcard_height_px - 2*ceiling(postcard_width_px*safe_margin)
 postcard_dpi <- 300
 
-#' Save a postcard image to a file
 ggpostcard_save <- function(filename, plot, ...){
   ggplot2::ggsave(filename = filename, plot=plot, width = postcard_content_width_px/postcard_dpi, height = postcard_content_height_px/postcard_dpi, dpi = postcard_dpi, ...)
 }

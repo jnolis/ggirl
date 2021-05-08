@@ -18,9 +18,9 @@ get_year_dates <- function(year = NULL){
   seq.Date(start_date,end_date,by="day")
 }
 
-if(requireNamespace("memoise", quietly = TRUE)){
-  mem_get_sunrise_sunset_single_day <- memoise::memoise(get_sunrise_sunset_single_day)
-}
+
+mem_get_sunrise_sunset_single_day <- memoise::memoise(get_sunrise_sunset_single_day)
+
 
 
 get_sunrise_sunsets <- function(lat, long, tz, dates = NULL, progress = TRUE){
@@ -187,7 +187,7 @@ make_sunrise_plot <- function(sunrise_info, location_name, tz){
 #'   send_addresses = send_addresses, messages = messages)
 #' @export
 ggpostcard_example_sunrise <- function(location_lat = NULL, location_long = NULL, location_tz = NULL, location_name = NULL, ...){
-  required_packages <- c("lubridate", "memoise", "progress", "tidyr")
+  required_packages <- c("lubridate", "progress", "tidyr")
   packages_is_installed <- sapply(required_packages, function(x) requireNamespace(x, quietly = TRUE))
   if (any(!packages_is_installed)) {
     stop(paste0("This example requires you to install these packages: ",
