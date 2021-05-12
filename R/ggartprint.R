@@ -16,7 +16,7 @@ ggartprint_sizes <- function(){
   info <- artprint_size_info[,c("size","price_cents","width_in","height_in")]
   info_names <- c("size","price","width_inches","height_inches")
   info$price <- paste0("$", sprintf("%.2f",info$price/100))
-  info
+  info[,c("size","price")]
 }
 
 
