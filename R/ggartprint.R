@@ -25,8 +25,8 @@ ggartprint_sizes <- function(){
 #' This function takes a ggplot2 output and gives a preview of how the plot will look as an art print.
 #' While it's totally fine to just call ggirl::ggartprint to preview, this allows you to preview locally.
 #'
-#' The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not
-#'
+#' The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not.
+#' The preview includes a frame, but that will not be included with the print.
 #'
 #' @param plot the plot to use as an art print
 #' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
@@ -156,7 +156,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #' You can choose from a number of options for the size of the print (and either rectangular or square).
 #' All of the sizes are high resolution, so things like text size in the R/RStudio plot may not reflect what
 #' it would look like as a poster. It's recommended you run the function a few times and adjust plot attributes
-#' until you get it the way you like it.
+#' until you get it the way you like it. The preview image includes a frame, but that will not be included with the print.
 #'
 #' Prints take up to 3-4 weeks to deliver.
 #'
