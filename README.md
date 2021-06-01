@@ -12,6 +12,7 @@ The mediums in this package that you can choose from will change over time. Curr
 _**Availability:** United States_
 
 ![Art prints made by ggartprint](man/figures/artprint-examples.jpg)
+_From left to right: [ggartprint_example_map](open-map-plot) plot, [Palmer Penguin](https://github.com/allisonhorst/palmerpenguins) data, and ggplot2 art by [@ijeamakaanyene](https://github.com/Ijeamakaanyene)._
 
 With `ggartprint()` you can order a beautiful art print to be mailed to you! The prints are on archival photo-rag paper and come in a number of sizes from "cute and small" to "large and centerpiece of a room"
 
@@ -61,6 +62,8 @@ This will open a web page to preview the art print. if you like how it looks you
 And you're done! Art prints will arrive in around 2-3 weeks.
 
 ### Examples for if you can't think of a cool art print plot 
+
+#### Open map plot
 
 Try making a map! With `ggartprint_example_map()` you can make a map that would cost you twice as much from a non-R based tool. This uses the `osmdata` package to get data from Open Street Maps, and is based on a tutorial by [Joshua McCrain](http://joshuamccrain.com/tutorials/maps/streets_tutorial.html).
 
@@ -208,9 +211,9 @@ If you think this package is interesting you can help in multiple ways! Maybe yo
 Thanks to:
 
 * [@nolistic](https://github.com/nolistic) and [@robinsones](https://github.com/robinsones) for helping design the product.
-* The beta testers: [@cxinya](https://github.com/cxinya), [@delabj](https://github.com/delabj), [@thisisnic](https://github.com/thisisnic), [@TheCoachEdwards](https://github.com/TheCoachEdwards), [@ryantimpe](https://github.com/ryantimpe), [@robinsones](https://github.com/robinsones), [@mcsiple](https://github.com/mcsiple), and [@cathblatter](https://github.com/cathblatter).
+* The ggpostcard beta testers: [@cxinya](https://github.com/cxinya), [@delabj](https://github.com/delabj), [@thisisnic](https://github.com/thisisnic), [@TheCoachEdwards](https://github.com/TheCoachEdwards), [@ryantimpe](https://github.com/ryantimpe), [@robinsones](https://github.com/robinsones), [@mcsiple](https://github.com/mcsiple), and [@cathblatter](https://github.com/cathblatter).
 * [@ColinFay](https://github.com/ColinFay) for the package [{brochure}](https://github.com/ColinFay/brochure) which powers the Shiny server doing the back-end work.
-* [@Ijeamakaanyene](https://github.com/Ijeamakaanyene) for the use of the contouR example.
+* [@Ijeamakaanyene](https://github.com/Ijeamakaanyene) for the use of the contouR example and beta testing ggartprint.
 * [@ryantimpe](https://github.com/ryantimpe) for the use of the rstereogram example.
 * [sunrise-sunset.org](https://sunrise-sunset.org/) for the API powering the sunrise example.
 * [Joshua McCrain](http://joshuamccrain.com/tutorials/maps/streets_tutorial.html) for the tutorial used for the map example.
