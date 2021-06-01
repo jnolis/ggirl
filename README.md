@@ -12,7 +12,7 @@ The mediums in this package that you can choose from will change over time. Curr
 _**Availability:** United States_
 
 ![Art prints made by ggartprint](man/figures/artprint-examples.jpg)
-_From left to right: [ggartprint_example_map](#open-map-plot) plot, [Palmer Penguin](https://github.com/allisonhorst/palmerpenguins) data, and ggplot2 art by [@ijeamakaanyene](https://github.com/Ijeamakaanyene)._
+_From left to right: [ggartprint_example_map](#open-street-map-plot) plot, [Palmer Penguin](https://github.com/allisonhorst/palmerpenguins) data, and ggplot2 art by [@ijeamakaanyene](https://github.com/Ijeamakaanyene)._
 
 With `ggartprint()` you can order a beautiful art print to be mailed to you! The prints are on archival photo-rag paper and come in a number of sizes from "cute and small" to "large and centerpiece of a room"
 
@@ -63,7 +63,7 @@ And you're done! Art prints will arrive in around 2-3 weeks.
 
 ### Examples for if you can't think of a cool art print plot 
 
-#### Open map plot
+#### Open Street Map plot
 
 Try making a map! With `ggartprint_example_map()` you can make a map that would cost you twice as much from a non-R based tool. This uses the `osmdata` package to get data from Open Street Maps, and is based on a tutorial by [Joshua McCrain](http://joshuamccrain.com/tutorials/maps/streets_tutorial.html).
 
