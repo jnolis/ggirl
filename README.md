@@ -12,7 +12,7 @@ The mediums in this package that you can choose from will change over time. Curr
 _**Availability:** United States_
 
 ![Art prints made by ggartprint](man/figures/artprint-examples.jpg)
-_From left to right: [ggartprint_example_map](open-map-plot) plot, [Palmer Penguin](https://github.com/allisonhorst/palmerpenguins) data, and ggplot2 art by [@ijeamakaanyene](https://github.com/Ijeamakaanyene)._
+_From left to right: [ggartprint_example_map](#open-map-plot) plot, [Palmer Penguin](https://github.com/allisonhorst/palmerpenguins) data, and ggplot2 art by [@ijeamakaanyene](https://github.com/Ijeamakaanyene)._
 
 With `ggartprint()` you can order a beautiful art print to be mailed to you! The prints are on archival photo-rag paper and come in a number of sizes from "cute and small" to "large and centerpiece of a room"
 
