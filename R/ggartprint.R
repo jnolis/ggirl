@@ -3,7 +3,7 @@ artprint_dpi <- 300
 artprint_size_info <-
   data.frame(
     size = c("11x14", "16x20", "18x24", "24x36", "12x12", "16x16", "20x20"),
-    price_cents = c(2750L, 3250L, 3750L, 5000L, 2750L, 3250L, 3750L),
+    price_cents = c(3000L, 4000L, 5000L, 7500L, 3000L, 3500L, 4500L),
     width_in =  c(11L, 16L, 18L, 24L, 12L, 16L, 20L),
     height_in = c(14L, 20L, 24L, 36L, 12L, 16L, 20L)
     )
@@ -158,7 +158,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #' it would look like as a poster. It's recommended you run the function a few times and adjust plot attributes
 #' until you get it the way you like it. The preview image includes a frame, but that will not be included with the print.
 #'
-#' Prints take up to 3-4 weeks to deliver.
+#' Prints take up to 2-3 weeks to deliver.
 #'
 #' @param plot the plot to use as an art print.
 #' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
@@ -226,7 +226,7 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
                          body = rawConnectionValue(zz),
                          httr::content_type("application/octet-stream"))
   if(response$status_code == 403L){
-    stop("Cannot connect to ggirl server. Go to https://ggirl.art/status to see latest status updates")
+    stop("Cannot connect to ggirl server. Go to https://github.com/jnolis/ggirl to see latest status updates")
   }
   if(response$status_code != 201L){
     stop(httr::content(response, as="text", encoding="UTF-8"))

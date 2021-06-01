@@ -38,7 +38,7 @@ Running this function will bring you to a webpage to confirm the order and submi
 You can choose from a number of options for the size of the print (and either rectangular or square).
 All of the sizes are high resolution, so things like text size in the R/RStudio plot may not reflect what
 it would look like as a poster. It's recommended you run the function a few times and adjust plot attributes
-until you get it the way you like it.
+until you get it the way you like it. The preview image includes a frame, but that will not be included with the print.
 
 Prints take up to 3-4 weeks to deliver.
 }

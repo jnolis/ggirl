@@ -20,7 +20,8 @@ This function takes a ggplot2 output and gives a preview of how the plot will lo
 While it's totally fine to just call ggirl::ggartprint to preview, this allows you to preview locally.
 }
 \details{
-The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not
+The preview will appear in either the "Viewer" pane of RStudio or in your browser, depending on if RStudio is installed or not.
+The preview includes a frame, but that will not be included with the print.
 }
 \examples{
 library(ggplot2)
