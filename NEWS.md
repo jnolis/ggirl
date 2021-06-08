@@ -1,5 +1,8 @@
-# Version 1.0.1 (2020-04-15)
+# Version 2.0.0 (2021-06-07)
+Now includes ggartprint() for making art prints for your walls
+
+# Version 1.0.1 (2021-04-15)
 Improved max character computation by accounting for newlines
 
-# Version 1.0.0 (2020-04-12)
+# Version 1.0.0 (2021-04-12)
 Initial launch with ggirl::ggpostcard()
