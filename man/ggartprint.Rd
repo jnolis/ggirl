@@ -40,7 +40,7 @@ All of the sizes are high resolution, so things like text size in the R/RStudio 
 it would look like as a poster. It's recommended you run the function a few times and adjust plot attributes
 until you get it the way you like it. The preview image includes a frame, but that will not be included with the print.
 
-Prints take up to 3-4 weeks to deliver.
+Prints take up to 2-3 weeks to deliver.
 }
 \examples{
 library(ggplot2)
