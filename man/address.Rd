@@ -33,6 +33,7 @@ address(
 This function takes string inputs and converts them into an address object that can be used to send irl art (or as a return address).
 }
 \examples{
-send_address <- address(name = "RStudio", address_line_1 = "250 Northern Ave", city = "Boston", state = "MA", postal_code = "02210", country = "US")
+send_address <- address(name = "RStudio", address_line_1 = "250 Northern Ave",
+  city = "Boston", state = "MA", postal_code = "02210", country = "US")
 
 }

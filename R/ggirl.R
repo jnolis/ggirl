@@ -11,7 +11,8 @@
 #' @param country The 2-character [ISO-1366 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) for the country. Non-US shipping is experimental!
 #'
 #' @examples
-#' send_address <- address(name = "RStudio", address_line_1 = "250 Northern Ave", city = "Boston", state = "MA", postal_code = "02210", country = "US")
+#' send_address <- address(name = "RStudio", address_line_1 = "250 Northern Ave",
+#'   city = "Boston", state = "MA", postal_code = "02210", country = "US")
 #'
 #' @export
 address <- function(name,
