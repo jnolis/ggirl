@@ -55,7 +55,6 @@ mem_get_map_data <- memoise::memoise(get_map_data)
 #' @param colors (optional) a named vector of colors to use for the plot. Defaults to
 #' `c(back = "#FEFDF7", grid = "#FCF3DB", text = "#474973", axis_text = "#E1C886", roads = "#474973", trains = "#474973")`
 #' @param text_rel_sizes (optional) the relative sizes of the text to use. Defaults to `c(title = 3.5, subtitle = 2.5, axis = 0.4)`
-#'
 #' @return a ggplot2 plot to pass to ggartprint
 #' @family ggartprint_examples
 #' @examples
@@ -65,10 +64,11 @@ mem_get_map_data <- memoise::memoise(get_map_data)
 #'                           city = "Boston", state = "MA",
 #'                           postal_code = "22222", country = "US")
 #' plot <- ggartprint_example_map("Seattle", "Washington")
-#' # use the background option to avoid white boundaries
-#' ggartprint(plot, background = "#FEFDF7", size = "11x14", orientation = "portrait",
+#' background <- "#FEFDF7" # use the background option only when your background isn't white
+#' ggartprint(plot, size = "11x14", orientation = "portrait",
 #'                                 contact_email = contact_email,
-#'                                 address = delivery_address)
+#'                                 address = delivery_address,
+#'                                 background = background)
 #' @export
 ggartprint_example_map <- function(title, subtitle, coordinates = NULL, colors = NULL, text_rel_sizes = NULL){
   if(is.null(coordinates)){
