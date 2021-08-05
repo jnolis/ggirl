@@ -12,7 +12,7 @@ _**Availability:** United States_
 
 ORIGINAL GGPLOT2 PLOT             |  A REAL LIFE WATERCOLOR
 :-------------------------:|:-------------------------:
-![ggplot2 plot](man/figures/watercolor-start.png)  | ![the resulting watercolor](man/figures/watercolor-end.jpg)
+![ggplot2 plot](man/figures/watercolor-start-sm.png)  | ![the resulting watercolor](man/figures/watercolor-end.jpg)
 
 
 With `ggwatercolor()` you have a hand-painted watercolor painting of your ggplot2. These paintings are done
