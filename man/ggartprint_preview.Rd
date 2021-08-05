@@ -13,7 +13,7 @@ ggartprint_preview(plot, size, orientation, ...)
 
 \item{orientation}{should the plot be landscape or portrait?}
 
-\item{...}{other options to pass to \code{ragg::agg_png()} when turning the plot into an image for the front of the postcard.}
+\item{...}{other options to pass to \code{ragg::agg_png()} when turning the plot into an image.}
 }
 \description{
 This function takes a ggplot2 output and gives a preview of how the plot will look as an art print.

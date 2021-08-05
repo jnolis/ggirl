@@ -4,10 +4,59 @@ _need support? Email [support@ggirl.art](mailto:support@ggirl.art)_
 
 This package is a platform for taking ggplot2 objects and getting real life versions of them. Tired of saving your plots with the plain 'ol `ggsave()` function? Try this package instead!
 
-The mediums in this package that you can choose from will change over time. Currently available are [ggartprint()](#ggartprint) and [ggpostcard()](#ggpostcard).
+The mediums in this package that you can choose from will change over time. Currently available are [ggwatercolor()](#ggwatercolor), [ggartprint()](#ggartprint), and [ggpostcard()](#ggpostcard).
+
+## ggwatercolor
+
+_**Availability:** United States_
+
+ORIGINAL GGPLOT2 PLOT             |  A REAL LIFE WATERCOLOR
+:-------------------------:|:-------------------------:
+![ggplot2 plot](man/figures/watercolor-start.png)  | ![the resulting watercolor](man/figures/watercolor-end.jpg)
 
 
-## ggartprint (new!)
+With `ggwatercolor()` you have a hand-painted watercolor painting of your ggplot2. These paintings are done
+on heavy cold-pressed 8"x10" watercolor paper with lightfast paints, meaning your beautiful watercolor will withstand
+the test of time.
+
+### How to request a watercolor commission
+
+First, install the package with:
+
+```r
+# install.packages("remotes") # if you don't already have it
+remotes::install_github("jnolis/ggirl")
+```
+
+Then create a plot you like:
+
+```r
+library(ggplot2)
+plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y)) +
+  geom_line() + geom_point() + theme_gray(48)
+```
+
+Then to request the commission! The `ggwatercolor()` function can be called to do so. Just specify the plot,
+the orientation, a contact email, and the address to mail the commission to.
+
+```r
+library(ggirl)
+delivery_address <- address(name = "Fake person", address_line_1 = "101 12th st",
+address_line_2 = "Apt 17", city = "Seattle", state = "WA",
+  postal_code = "98102", country = "US")
+contact_email = "fakeemail275@gmail.com"
+ggartprint(plot, orientation = "landscape", contact_email = contact_email, address = delivery_address)
+```
+
+This will open a web page to preview the watercolor. If you like it, you can request the commission, and in a
+few days you'll get an email with details about the commission and request for payment.
+
+![The screen to review the order](man/figures/watercolor-order-screen.png)
+
+The email will include the price, between \$100-\$175 depending on the complexity of the picture, and a link to pay. If the plot is complex it may also need to be simplified by the artist. After payment, the commission should be complete in up to 4 weeks.
+
+
+## ggartprint
 
 _**Availability:** United States_
 
