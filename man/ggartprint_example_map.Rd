@@ -48,9 +48,10 @@ delivery_address <- address(name = "Fake Personname", address_line_1 = "250 Nort
                           city = "Boston", state = "MA",
                           postal_code = "22222", country = "US")
 plot <- ggartprint_example_map("Seattle", "Washington")
-# use the background option to avoid white boundaries
-ggartprint(plot, background = "#FEFDF7", size = "11x14", orientation = "portrait",
+background <- "#FEFDF7" # use the background option only when your background isn't white
+ggartprint(plot, size = "11x14", orientation = "portrait",
                                 contact_email = contact_email,
-                                address = delivery_address)
+                                address = delivery_address,
+                                background = background)
 }
 \concept{ggartprint_examples}

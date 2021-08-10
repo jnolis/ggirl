@@ -1,3 +1,6 @@
+# Version 3.0.0 (2021-08-10)
+Now includes ggwatercolor() for commissioning hand-painted watercolor art of your ggplot
+
 # Version 2.0.0 (2021-06-07)
 Now includes ggartprint() for making art prints for your walls
 
