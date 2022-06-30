@@ -41,13 +41,19 @@ address <- function(name,
 #'
 #' This function gets the most current server URL by using a fixed lookup URL
 get_server_url <- function(){
-  server_url <- getOption("ggirl_server_url","https://ggirl-server.jnolis.com")
+  server_url <- getOption("ggirl_server_url", "https://ggirl-server.community.saturnenterprise.io")
 
   # in the event the server is sleeping, we need to kickstart it before doing the post
   response <- httr::GET(server_url)
   if(response$status_code != 200L){
     message("Waiting 10 seconds for ggirl server to come online")
     Sys.sleep(10)
+  }
+
+  # check again that the connection works at this point, and if not send an error
+  response <- httr::GET(server_url)
+  if(response$status_code != 200L){
+    step("ggirl server is not connecting--try updating the ggirl package or email ggirl@jnolis.com")
   }
   server_url
 }
