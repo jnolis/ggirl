@@ -186,20 +186,8 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
     stop("Art prints only available for US addresses through package. Email support@ggirl.art to price a custom order.")
   }
 
-  version <- packageDescription("ggirl", fields = "Version")
-  if(is.na(version)){
-    version <- "0.0.0"
-  }
-
-  server_url <- getOption("ggirl_server_url",
-                          "https://skyetetra.shinyapps.io/ggirl-server")
-
-  # in the event the server is sleeping, we need to kickstart it before doing the post
-  response <- httr::GET(server_url)
-  if(response$status_code != 200L){
-    message("Waiting 10 seconds for ggirl server to come online")
-    Sys.sleep(10)
-  }
+  version <- get_version()
+  server_url <- get_server_url()
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
@@ -217,20 +205,5 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
     version = version
   )
 
-  zz <- rawConnection(raw(0), "r+")
-  on.exit({close(zz)}, add=TRUE)
-  saveRDS(data, zz)
-  seek(zz, 0)
-
-  response <- httr::POST(paste0(server_url, "/upload"),
-                         body = rawConnectionValue(zz),
-                         httr::content_type("application/octet-stream"))
-  if(response$status_code == 403L){
-    stop("Cannot connect to ggirl server. Go to https://github.com/jnolis/ggirl to see latest status updates")
-  }
-  if(response$status_code != 201L){
-    stop(httr::content(response, as="text", encoding="UTF-8"))
-  }
-  token <- httr::content(response, as="text", encoding="UTF-8")
-  browseURL(paste0(server_url,"/artprint?token=",token))
+  upload_data_and_launch(data, server_url, "artprint")
 }
