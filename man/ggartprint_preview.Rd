@@ -9,7 +9,7 @@ ggartprint_preview(plot, size, orientation, ...)
 \arguments{
 \item{plot}{the plot to use as an art print}
 
-\item{size}{the size of the art print. Use \code{\link[=ggartprint_sizes]{ggartprint_sizes()}} to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.}
+\item{size}{the size of the art print. Use \code{\link[=ggartprint_sizes]{ggartprint_sizes()}} to see a list of the sizes. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.}
 
 \item{orientation}{should the plot be landscape or portrait?}
 

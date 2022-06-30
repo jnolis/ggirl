@@ -36,3 +36,53 @@ address <- function(name,
 
   structure(address_set, class="ggirl_address")
 }
+
+#' Get the server URL
+#'
+#' This function gets the most current server URL by using a fixed lookup URL
+get_server_url <- function(){
+  server_url <- getOption("ggirl_server_url","https://ggirl-server.jnolis.com")
+
+  # in the event the server is sleeping, we need to kickstart it before doing the post
+  response <- httr::GET(server_url)
+  if(response$status_code != 200L){
+    message("Waiting 10 seconds for ggirl server to come online")
+    Sys.sleep(10)
+  }
+  server_url
+}
+
+
+#' Get package version
+#'
+#' @return the version of the package being used
+get_version <- function(){
+  version <- packageDescription("ggirl", fields = "Version")
+  if(is.na(version)){
+    version <- "0.0.0"
+  }
+  version
+}
+
+
+#' Upload data
+#'
+#' This function will upload the data to the server, then launch the page for it
+upload_data_and_launch <- function(data, server_url, type){
+  zz <- rawConnection(raw(0), "r+")
+  on.exit({close(zz)}, add=TRUE)
+  saveRDS(data, zz)
+  seek(zz, 0)
+
+  response <- httr::POST(paste0(server_url, "/upload"),
+                         body = rawConnectionValue(zz),
+                         httr::content_type("application/octet-stream"))
+  if(response$status_code == 403L){
+    stop("Cannot connect to ggirl server.")
+  }
+  if(response$status_code != 201L){
+    stop(httr::content(response, as="text", encoding="UTF-8"))
+  }
+  token <- httr::content(response, as="text", encoding="UTF-8")
+  browseURL(paste0(server_url,"/", type, "?token=",token))
+}

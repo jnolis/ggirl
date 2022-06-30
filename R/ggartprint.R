@@ -10,7 +10,7 @@ artprint_size_info <-
 
 #' get a table of sizes of prints available.
 #'
-#' Prices include shipping. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' Prices include shipping. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @export
 ggartprint_sizes <- function(){
   info <- artprint_size_info[,c("size","price_cents","width_in","height_in")]
@@ -29,7 +29,7 @@ ggartprint_sizes <- function(){
 #' The preview includes a frame, but that will not be included with the print.
 #'
 #' @param plot the plot to use as an art print
-#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @param orientation should the plot be landscape or portrait?
 #' @param ... other options to pass to `ragg::agg_png()` when turning the plot into an image.
 #' @seealso [ggartprint()] to order the art print
@@ -161,7 +161,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #' Prints take up to 2-3 weeks to deliver.
 #'
 #' @param plot the plot to use as an art print.
-#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @param orientation should the plot be landscape or portrait?
 #' @param contact_email email address to send order updates.
 #' @param quantity the number of prints to order (defaults to 1).
@@ -183,23 +183,11 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
 
   orientation <- match.arg(orientation)
   if(any(address$country != "US")){
-    stop("Art prints only available for US addresses through package. Email support@ggirl.art to price a custom order.")
+    stop("Art prints only available for US addresses through package. Email ggirl@jnolis.com to price a custom order.")
   }
 
-  version <- packageDescription("ggirl", fields = "Version")
-  if(is.na(version)){
-    version <- "0.0.0"
-  }
-
-  server_url <- getOption("ggirl_server_url",
-                          "https://skyetetra.shinyapps.io/ggirl-server")
-
-  # in the event the server is sleeping, we need to kickstart it before doing the post
-  response <- httr::GET(server_url)
-  if(response$status_code != 200L){
-    message("Waiting 10 seconds for ggirl server to come online")
-    Sys.sleep(10)
-  }
+  version <- get_version()
+  server_url <- get_server_url()
 
   temp_png <- tempfile(fileext = ".png")
   on.exit({file.remove(temp_png)}, add=TRUE)
@@ -217,20 +205,5 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
     version = version
   )
 
-  zz <- rawConnection(raw(0), "r+")
-  on.exit({close(zz)}, add=TRUE)
-  saveRDS(data, zz)
-  seek(zz, 0)
-
-  response <- httr::POST(paste0(server_url, "/upload"),
-                         body = rawConnectionValue(zz),
-                         httr::content_type("application/octet-stream"))
-  if(response$status_code == 403L){
-    stop("Cannot connect to ggirl server. Go to https://github.com/jnolis/ggirl to see latest status updates")
-  }
-  if(response$status_code != 201L){
-    stop(httr::content(response, as="text", encoding="UTF-8"))
-  }
-  token <- httr::content(response, as="text", encoding="UTF-8")
-  browseURL(paste0(server_url,"/artprint?token=",token))
+  upload_data_and_launch(data, server_url, "artprint")
 }
