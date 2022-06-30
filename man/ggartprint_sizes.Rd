@@ -7,5 +7,5 @@
 ggartprint_sizes()
 }
 \description{
-Prices include shipping. If a size isn't available that you want email support@ggirl.art for custom sizes.
+Prices include shipping. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 }
