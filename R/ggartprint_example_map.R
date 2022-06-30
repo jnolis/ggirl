@@ -123,10 +123,13 @@ ggartprint_example_map <- function(title, subtitle, coordinates = NULL, colors =
     ggplot2::labs(title = title, subtitle = subtitle)+
     ggplot2::theme_gray(24)+
     ggplot2::theme(
-      axis.text = ggplot2::element_text(color = colors[["axis_text"]], size = rel(text_rel_sizes[["axis"]])),
+      axis.text = ggplot2::element_text(color = colors[["axis_text"]],
+                                        size = ggplot2::rel(text_rel_sizes[["axis"]])),
       axis.ticks = ggplot2::element_blank(),
-      plot.title = ggplot2::element_text(size = rel(text_rel_sizes[["title"]]), color = colors[["text"]], margin = ggplot2::margin(20), hjust=0.5),
-      plot.subtitle = ggplot2::element_text(size = rel(text_rel_sizes[["subtitle"]]), color = colors[["text"]], hjust=0.5),
+      plot.title = ggplot2::element_text(size = ggplot2::rel(text_rel_sizes[["title"]]),
+                                         color = colors[["text"]], margin = ggplot2::margin(20), hjust=0.5),
+      plot.subtitle = ggplot2::element_text(size = ggplot2::rel(text_rel_sizes[["subtitle"]]),
+                                            color = colors[["text"]], hjust=0.5),
       plot.background = ggplot2::element_rect(fill=colors[["back"]]),
       panel.background = ggplot2::element_rect(fill=colors[["back"]]),
       panel.grid.major = ggplot2::element_line(color = colors[["grid"]], size = ggplot2::rel(0.5)),

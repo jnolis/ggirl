@@ -1,3 +1,6 @@
+# Version 3.0.1 (2021-12-08)
+Minor bug fix with map example
+
 # Version 3.0.0 (2021-08-10)
 Now includes ggwatercolor() for commissioning hand-painted watercolor art of your ggplot
 
