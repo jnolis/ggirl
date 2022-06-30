@@ -3,7 +3,7 @@ Type: Package
 Title: ggplot2 art in real life
 Version: 3.1.0
 Author: Jacqueline Nolis
-Maintainer: Jacqueline Nolis <support@ggirl.art>
+Maintainer: Jacqueline Nolis <ggirl@jnolis.com>
 Description: This is a collection of functions that let you get ggplot2 plots
     in physical formats. For example ggirl::ggpostcard() allows you to order
     postcards to be sent to your friends and coworkers.
@@ -15,7 +15,7 @@ Imports:
   memoise (>= 2.0.0),
   ragg (>= 1.1.2)
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
   lubridate (>= 1.7.9),

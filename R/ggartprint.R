@@ -10,7 +10,7 @@ artprint_size_info <-
 
 #' get a table of sizes of prints available.
 #'
-#' Prices include shipping. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' Prices include shipping. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @export
 ggartprint_sizes <- function(){
   info <- artprint_size_info[,c("size","price_cents","width_in","height_in")]
@@ -29,7 +29,7 @@ ggartprint_sizes <- function(){
 #' The preview includes a frame, but that will not be included with the print.
 #'
 #' @param plot the plot to use as an art print
-#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @param orientation should the plot be landscape or portrait?
 #' @param ... other options to pass to `ragg::agg_png()` when turning the plot into an image.
 #' @seealso [ggartprint()] to order the art print
@@ -161,7 +161,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #' Prints take up to 2-3 weeks to deliver.
 #'
 #' @param plot the plot to use as an art print.
-#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email support@ggirl.art for custom sizes.
+#' @param size the size of the art print. Use [ggartprint_sizes()] to see a list of the sizes. If a size isn't available that you want email ggirl@jnolis.com for custom sizes.
 #' @param orientation should the plot be landscape or portrait?
 #' @param contact_email email address to send order updates.
 #' @param quantity the number of prints to order (defaults to 1).
@@ -183,7 +183,7 @@ ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portra
 
   orientation <- match.arg(orientation)
   if(any(address$country != "US")){
-    stop("Art prints only available for US addresses through package. Email support@ggirl.art to price a custom order.")
+    stop("Art prints only available for US addresses through package. Email ggirl@jnolis.com to price a custom order.")
   }
 
   version <- get_version()

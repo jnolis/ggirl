@@ -158,7 +158,7 @@ ggwatercolor <- function(plot, orientation = c("landscape","portrait"), contact_
 
   orientation <- match.arg(orientation)
   if(any(address$country != "US")){
-    stop("Art prints only available for US addresses through package. Email support@ggirl.art to price a custom order.")
+    stop("Art prints only available for US addresses through package. Email ggirl@jnolis.com to price a custom order.")
   }
 
   version <- get_version()
