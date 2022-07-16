@@ -80,15 +80,16 @@ upload_data_and_launch <- function(data, server_url, type){
   saveRDS(data, zz)
   seek(zz, 0)
 
-  response <- httr::POST(paste0(server_url, "/upload"),
-                         body = rawConnectionValue(zz),
-                         httr::content_type("application/octet-stream"))
-  if(response$status_code == 403L){
-    stop("Cannot connect to ggirl server.")
-  }
-  if(response$status_code != 201L){
-    stop(httr::content(response, as="text", encoding="UTF-8"))
-  }
+  response <- httr::RETRY(
+    verb = "POST",
+    url = paste0(server_url, "/upload"),
+    body = rawConnectionValue(zz),
+    pause_min = 3,
+    pause_cap = 10,
+    quiet = TRUE,
+    httr::content_type("application/octet-stream")
+  )
+
   token <- httr::content(response, as="text", encoding="UTF-8")
   browseURL(paste0(server_url,"/", type, "?token=",token))
 }
