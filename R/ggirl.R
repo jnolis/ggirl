@@ -43,18 +43,20 @@ address <- function(name,
 get_server_url <- function(){
   server_url <- getOption("ggirl_server_url", "https://ggirl-server.community.saturnenterprise.io")
 
-  # in the event the server is sleeping, we need to kickstart it before doing the post
-  response <- httr::GET(server_url)
-  if(response$status_code != 200L){
-    message("Waiting 10 seconds for ggirl server to come online")
-    Sys.sleep(10)
-  }
+  tryCatch({
+    httr::RETRY(
+      verb = "GET",
+      url = server_url,
+      times = 2,
+      pause_min = 5,
+      pause_cap = 5,
+      quiet = TRUE,
+      httr::timeout(5)
+    )
+  }, error = function(e){
+    stop("ggirl server is not connecting--try updating the ggirl package or email ggirl@jnolis.com")
+  })
 
-  # check again that the connection works at this point, and if not send an error
-  response <- httr::GET(server_url)
-  if(response$status_code != 200L){
-    step("ggirl server is not connecting--try updating the ggirl package or email ggirl@jnolis.com")
-  }
   server_url
 }
 
@@ -80,16 +82,19 @@ upload_data_and_launch <- function(data, server_url, type){
   saveRDS(data, zz)
   seek(zz, 0)
 
-  response <- httr::RETRY(
-    verb = "POST",
-    url = paste0(server_url, "/upload"),
-    body = rawConnectionValue(zz),
-    pause_min = 3,
-    pause_cap = 10,
-    quiet = TRUE,
-    httr::content_type("application/octet-stream")
-  )
-
-  token <- httr::content(response, as="text", encoding="UTF-8")
-  browseURL(paste0(server_url,"/", type, "?token=",token))
+  tryCatch({
+    response <- httr::RETRY(
+      verb = "POST",
+      url = paste0(server_url, "/upload"),
+      body = rawConnectionValue(zz),
+      pause_min = 3,
+      pause_cap = 10,
+      quiet = TRUE,
+      httr::content_type("application/octet-stream")
+    )
+    token <- httr::content(response, as="text", encoding="UTF-8")
+    browseURL(paste0(server_url,"/", type, "?token=",token))
+  }, error = function(e){
+    stop("Plot upload failed--try updating the ggirl package or email ggirl@jnolis.com")
+  })
 }
