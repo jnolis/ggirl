@@ -41,7 +41,7 @@ address <- function(name,
 #'
 #' This function gets the most current server URL by using a fixed lookup URL
 get_server_url <- function(){
-  server_url <- getOption("ggirl_server_url", "https://ggirl-server.community.saturnenterprise.io")
+  server_url <- getOption("ggirl_server_url", "https://skyetetra.shinyapps.io/ggirl-server")
 
   tryCatch({
     httr::RETRY(

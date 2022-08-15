@@ -1,7 +1,7 @@
 Package: ggirl
 Type: Package
 Title: ggplot2 art in real life
-Version: 3.1.1
+Version: 3.1.2
 Author: Jacqueline Nolis
 Maintainer: Jacqueline Nolis <ggirl@jnolis.com>
 Description: This is a collection of functions that let you get ggplot2 plots
