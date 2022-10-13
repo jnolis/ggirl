@@ -1,3 +1,6 @@
+# Version 3.1.2 (2022-08-14)
+Backend changes
+
 # Version 3.1.1 (2022-07-15)
 Fixed a bug where the first request would fail if the server has been idle for a while
 
