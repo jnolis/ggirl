@@ -1,3 +1,6 @@
+# Version 3.1.3 (2022-10-12)
+Backend changes:improves error handling if package cannot connect to server
+
 # Version 3.1.2 (2022-08-14)
 Backend changes
 

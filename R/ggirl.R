@@ -83,15 +83,30 @@ upload_data_and_launch <- function(data, server_url, type){
   seek(zz, 0)
 
   tryCatch({
-    response <- httr::RETRY(
-      verb = "POST",
-      url = paste0(server_url, "/upload"),
-      body = rawConnectionValue(zz),
-      pause_min = 3,
-      pause_cap = 10,
-      quiet = TRUE,
-      httr::content_type("application/octet-stream")
-    )
+    url <- paste0(server_url, "/upload")
+    body <- rawConnectionValue(zz)
+    response <- httr::POST(url = url,
+               body = body,
+               httr::content_type("application/octet-stream"),
+               httr::timeout(5))
+    if(!(response$status_code %in% c(200, 201, 202))){
+      message("Waiting for the server to respond (may take up to 30 seconds)")
+      response <- httr::RETRY(
+        verb = "POST",
+        url = url,
+        body = body,
+        pause_min = 3,
+        times = 5,
+        pause_cap = 5,
+        quiet = TRUE,
+        terminate_on = c(200, 201, 202),
+        httr::content_type("application/octet-stream"),
+        httr::timeout(5)
+      )
+    }
+    if(!(response$status_code %in% c(200, 201, 202))){
+      stop("Invalid response")
+    }
     token <- httr::content(response, as="text", encoding="UTF-8")
     browseURL(paste0(server_url,"/", type, "?token=",token))
   }, error = function(e){
