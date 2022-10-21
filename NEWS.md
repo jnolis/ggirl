@@ -1,3 +1,6 @@
+# Version 3.1.4 (2022-10-21)
+Improved the sunrise postcard example after being motivated by #normconf
+
 # Version 3.1.3 (2022-10-12)
 Backend changes:improves error handling if package cannot connect to server
 
