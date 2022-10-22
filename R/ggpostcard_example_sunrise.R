@@ -116,7 +116,7 @@ format_sunrise_info <- function(sunrise_info, year, tz){
   list(si_long_areas = si_long_areas, si_long_lines = si_long_lines, y_origin = y_origin, year = year)
 }
 
-make_sunrise_plot_simple <- function(formatted_sunrise_info){
+make_sunrise_plot_simple <- function(formatted_sunrise_info, location_name){
   plot_order <- function(name){
     factor(name,
            levels =rev(c("astronomical_twilight_begin",
@@ -267,6 +267,6 @@ ggpostcard_example_sunrise <- function(location_lat = NULL, location_long = NULL
 
   sunrise_info <- get_sunrise_sunsets(location_lat, location_long, location_tz, year)
   formatted_sunrise_info <- format_sunrise_info(sunrise_info, year, location_tz)
-  plot <- make_sunrise_plot_simple(formatted_sunrise_info)
+  plot <- make_sunrise_plot_simple(formatted_sunrise_info, location_name)
   plot
 }
