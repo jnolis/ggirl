@@ -1,12 +1,7 @@
 artprint_dpi <- 300
 
 artprint_size_info <-
-  data.frame(
-    size = c("11x14", "16x20", "18x24", "24x36", "12x12", "16x16", "20x20"),
-    price_cents = c(3000L, 4000L, 5000L, 7500L, 3000L, 3500L, 4500L),
-    width_in =  c(11L, 16L, 18L, 24L, 12L, 16L, 20L),
-    height_in = c(14L, 20L, 24L, 36L, 12L, 16L, 20L)
-    )
+  read.csv("https://storage.googleapis.com/ggirl-public/lookups/artprint-size-info.csv")
 
 #' get a table of sizes of prints available.
 #'
@@ -37,7 +32,7 @@ ggartprint_sizes <- function(){
 #' library(ggplot2)
 #' library(ggirl)
 #' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
-#' ggartprint_preview(plot, size="24x36", orientation = "landscape")
+#' ggartprint_preview(plot, size="11x14", orientation = "landscape")
 #' @export
 ggartprint_preview <- function(plot, size, orientation, ...){
   temp_dir <- tempfile()
@@ -131,8 +126,8 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
   old_dev <- grDevices::dev.cur()
   ragg::agg_png(
     filename,
-    width = width,
-    height = height,
+    width = as.integer(width),
+    height = as.integer(height),
     units = "in",
     res = artprint_dpi,
     ...)
@@ -176,7 +171,7 @@ ggartprint_save <- function(filename, plot, size, orientation = c("landscape","p
 #'   postal_code = "98102", country = "US")
 #' contact_email = "fakeemail275@gmail.com"
 #' plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
-#' ggartprint(plot, size="24x36", orientation = "landscape", quantity = 1,
+#' ggartprint(plot, size="11x14", orientation = "landscape", quantity = 1,
 #'            contact_email = contact_email, address = delivery_address)
 #' @export
 ggartprint <- function(plot, size = "11x14", orientation = c("landscape","portrait"),  quantity=1, contact_email, address, ...){

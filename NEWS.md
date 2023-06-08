@@ -1,3 +1,6 @@
+# Version 3.1.5 (2022-06-07)
+Updated art print prices to reflect increased costs
+
 # Version 3.1.4 (2022-10-21)
 Improved the sunrise postcard example after being motivated by #normconf
 

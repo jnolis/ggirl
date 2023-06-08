@@ -27,7 +27,7 @@ The preview includes a frame, but that will not be included with the print.
 library(ggplot2)
 library(ggirl)
 plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
-ggartprint_preview(plot, size="24x36", orientation = "landscape")
+ggartprint_preview(plot, size="11x14", orientation = "landscape")
 }
 \seealso{
 \code{\link[=ggartprint]{ggartprint()}} to order the art print

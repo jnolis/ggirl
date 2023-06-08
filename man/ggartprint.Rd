@@ -50,7 +50,7 @@ delivery_address <- address(name = "Fake person", address_line_1 = "101 12th st"
   postal_code = "98102", country = "US")
 contact_email = "fakeemail275@gmail.com"
 plot <- ggplot(data.frame(x=1:10, y=runif(10)),aes(x=x,y=y))+geom_line()+geom_point()+theme_gray(48)
-ggartprint(plot, size="24x36", orientation = "landscape", quantity = 1,
+ggartprint(plot, size="11x14", orientation = "landscape", quantity = 1,
            contact_email = contact_email, address = delivery_address)
 }
 \seealso{

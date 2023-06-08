@@ -129,16 +129,6 @@ _From left to right: [ggartprint_example_map](#open-street-map-plot) plot, [Palm
 
 With `ggartprint()` you can order a beautiful art print to be mailed to you! The prints are on archival photo-rag paper and come in a number of sizes from "cute and small" to "large and centerpiece of a room"
 
-|Size (inches)  |Price (includes shipping)  |
-|:-----|:------|
-|11x14 |$30.00 |
-|16x20 |$40.00 |
-|18x24 |$50.00 |
-|24x36 |$75.00 |
-|12x12 |$30.00 |
-|16x16 |$35.00 |
-|20x20 |$45.00 |
-
 ### How to make an art print
 
 First, install the package with:
@@ -164,7 +154,7 @@ delivery_address <- address(name = "Fake person", address_line_1 = "101 12th st"
 address_line_2 = "Apt 17", city = "Seattle", state = "WA",
   postal_code = "98102", country = "US")
 contact_email = "fakeemail275@gmail.com"
-ggartprint(plot, size="24x36", orientation = "landscape", quantity = 1,
+ggartprint(plot, size="11x14", orientation = "landscape", quantity = 1,
            contact_email = contact_email, address = delivery_address)
 ```
 

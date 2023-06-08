@@ -9,6 +9,7 @@ ggpostcard_example_sunrise(
   location_long = NULL,
   location_tz = NULL,
   location_name = NULL,
+  year = NULL,
   ...
 )
 }
